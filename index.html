@@ -94,19 +94,72 @@
     @media (max-width:980px){.kpis{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.kpis{grid-template-columns:1fr}}
 
-    /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
-    @media (max-width:980px){.about-grid{grid-template-columns:1fr}}
+    <section id="about" class="container">
+  <p class="subkicker">ABOUT</p>
+  <div class="about-grid">
+    <div>
+      <h2>Data Analyst focused on SQL & Power BI</h2>
+      <p class="muted">
+        I design dimensional models (FACT/DIM), build ETL/ELT pipelines, and ship dashboards for P&L, Gross Margin %, time KPIs (YTD/YoY/MoM), lead time / on-time) and quality validation. My work aims for decision-ready analytics and reproducible SQL.
+      </p>
 
-    /* TRAINING cards (enmarcado) */
-    .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
-    @media (max-width:920px){.train-grid{grid-template-columns:1fr}}
-    .train-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
-    .train-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-    .train-year{font-weight:800;color:#ffd166;letter-spacing:.1em}
-    .train-badge{font-size:12px;text-transform:uppercase;color:#c6cfdb;background:#0f1524;border:1px solid var(--line);padding:6px 10px;border-radius:999px}
-    .train-inst{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#aab3c2;margin-bottom:8px}
-    .train-list{margin:8px 0 0 18px;color:var(--muted)}
+      <div class="tagbar" style="margin:12px 0">
+        <span class="tag">T-SQL / MySQL</span><span class="tag">DAX · Power Query</span>
+        <span class="tag">Dimensional Model</span><span class="tag">Git/GitHub</span>
+        <span class="tag">Excel/Sheets</span><span class="tag">MongoDB (learning)</span>
+      </div>
+
+      <h3 style="margin-top:12px">Training</h3>
+
+      <!-- Training enmarcado -->
+      <div class="train-grid">
+        <div class="train-card">
+          <div class="train-top">
+            <div class="train-year">2025 — IN PROGRESS</div>
+            <div class="train-badge">International</div>
+          </div>
+          <div class="train-inst">EducaciónIT · Manhattan University</div>
+          <p class="muted" style="margin:6px 0 8px">Data Science Career Program (~275h).</p>
+          <ul class="train-list">
+            <li>SQL, Python (pandas), Power BI (PL-300 track).</li>
+            <li>Azure fundamentals, basic ML, Data Engineering.</li>
+          </ul>
+        </div>
+
+        <div class="train-card">
+          <div class="train-top">
+            <div class="train-year">2025</div>
+            <div class="train-badge">RAkqVb2n</div>
+          </div>
+          <div class="train-inst">Unicorn Academy</div>
+          <p class="muted" style="margin:6px 0 8px">Bootcamp Data Analytics.</p>
+          <ul class="train-list">
+            <li>Dimensional modeling, DAX & Power Query.</li>
+            <li>BI best practices and storytelling.</li>
+          </ul>
+        </div>
+
+        <div class="train-card" style="grid-column:1/-1">
+          <div class="train-top">
+            <div class="train-year">2017 — 2024</div>
+            <div class="train-badge">UFLO</div>
+          </div>
+          <div class="train-inst">Universidad de Flores</div>
+          <p class="muted" style="margin:6px 0 8px">B.A. in Psychology.</p>
+          <ul class="train-list">
+            <li>Applied statistics and quantitative/qualitative methods.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="actions" style="margin-top:16px">
+        <a class="btn primary" href="mailto:daianabeltran@gmail.com">Email me</a>
+        <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </div>
+</section>
 
     /* CONTACT (with icons) */
     .contact-grid{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
@@ -322,92 +375,7 @@
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="container">
-      <p class="subkicker">CONTACT</p>
-      <h2>Let’s talk</h2>
-      <p class="muted">Open to remote roles (LATAM / U.S.). Quick replies via Email or LinkedIn.</p>
-
-      <div class="contact-grid" style="margin-top:12px">
-        <!-- Address -->
-        <div class="contact-card">
-          <div class="contact-top">
-            <span class="icon-circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2C8.7 2 6 4.7 6 8c0 4.2 6 12 6 12s6-7.8 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5a2.5 2.5 0 0 1 0 5z"/></svg>
-            </span>
-            <div>
-              <div class="contact-label">Address</div>
-              <div class="contact-value">Remote · LATAM / U.S.</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phone -->
-        <div class="contact-card">
-          <div class="contact-top">
-            <span class="icon-circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/></svg>
-            </span>
-            <div>
-              <div class="contact-label">Contact number</div>
-              <div class="contact-value">On request</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Email -->
-        <div class="contact-card">
-          <div class="contact-top">
-            <span class="icon-circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M22 2 11 13l-1 5 5-1L22 2zM10 14l4 4"/></svg>
-            </span>
-            <div>
-              <div class="contact-label">Email address</div>
-              <div class="contact-value"><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- CV / Resume -->
-        <div class="contact-card">
-          <div class="contact-top">
-            <span class="icon-circle" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
-            </span>
-            <div>
-              <div class="contact-label">Download resume</div>
-              <div class="contact-actions">
-                <a class="btn primary" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a>
-                <a class="btn" href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">EN</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="container">
-    <div class="sep"></div>
-    © <span id="y"></span> Daiana Beltrán · Built with GitHub Pages
-  </footer>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Person",
-    "name":"Daiana Beltrán",
-    "jobTitle":"Data Analyst",
-    "email":"mailto:daianabeltran@gmail.com",
-    "url":"https://daiana-analytics.github.io",
-    "sameAs":[
-      "https://github.com/daiana-analytics",
-      "https://www.linkedin.com/in/daiana-beltran"
-    ],
-    "knowsAbout":["SQL","Power BI","DAX","Power Query","Dimensional modeling","ETL","Financial KPIs"]
-  }
-  </script>
+    <!-- CONTACT with yellow icons --> <section id="contact" class="container"> <p class="subkicker">CONTACT</p> <h2>Let’s talk</h2> <p class="muted">Open to remote roles (LATAM / U.S.). Quick replies via Email or LinkedIn.</p> <div class="contact-grid" style="margin-top:12px"> <!-- Address --> <div class="contact-card"> <div class="contact-top"> <span class="icon-circle" aria-hidden="true"> <!-- map/marker icon --> <svg viewBox="0 0 24 24"><path d="M12 2C8.7 2 6 4.7 6 8c0 4.2 6 12 6 12s6-7.8 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5a2.5 2.5 0 0 1 0 5z"/></svg> </span> <div> <div class="contact-label">Address</div> <div class="contact-value">Remote · LATAM / U.S.</div> </div> </div> </div> <!-- Phone --> <div class="contact-card"> <div class="contact-top"> <span class="icon-circle" aria-hidden="true"> <!-- phone icon --> <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/></svg> </span> <div> <div class="contact-label">Contact number</div> <div class="contact-value">On request</div> </div> </div> </div> <!-- Email --> <div class="contact-card"> <div class="contact-top"> <span class="icon-circle" aria-hidden="true"> <!-- paper plane --> <svg viewBox="0 0 24 24"><path d="M22 2 11 13l-1 5 5-1L22 2zM10 14l4 4"/></svg> </span> <div> <div class="contact-label">Email address</div> <div class="contact-value"><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></div> </div> </div> </div> <!-- CV / Resume --> <div class="contact-card"> <div class="contact-top"> <span class="icon-circle" aria-hidden="true"> <!-- download --> <svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg> </span> <div> <div class="contact-label">Download resume</div> <div class="contact-actions"> <a class="btn primary" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a> <a class="btn" href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">EN</a> </div> </div> </div> </div> </div> </section> </main> <footer class="container"> <div class="sep"></div> © <span id="y"></span> Daiana Beltrán · Built with GitHub Pages </footer> <!-- JSON-LD --> <script type="application/ld+json"> { "@context":"https://schema.org", "@type":"Person", "name":"Daiana Beltrán", "jobTitle":"Data Analyst", "email":"mailto:daianabeltran@gmail.com", "url":"https://daiana-analytics.github.io", "sameAs":[ "https://github.com/daiana-analytics", "https://www.linkedin.com/in/daiana-beltran" ], "knowsAbout":["SQL","Power BI","DAX","Power Query","Dimensional modeling","ETL","Financial KPIs"] } </script> <script>document.getElementById('y').textContent=new Date().getFullYear();</script> </body> </html>
 
   <!-- Year + KPI animation -->
   <script>
