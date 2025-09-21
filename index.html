@@ -6,13 +6,10 @@
   <title>Daiana Beltrán — Data Analyst (SQL · Power BI)</title>
   <meta name="description" content="Portfolio of Daiana Beltrán. Projects in SQL & Power BI, data modeling, and BI dashboards." />
   <meta name="author" content="Daiana Beltrán" />
-
-  <!-- Open Graph -->
   <meta property="og:title" content="Daiana Beltrán — Data Analyst (SQL · Power BI)" />
   <meta property="og:description" content="Projects in SQL & Power BI. Contact and CV." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://daiana-analytics.github.io/" />
-
   <link rel="icon" href="/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
@@ -41,13 +38,7 @@
     .menu{display:flex;gap:22px;font-weight:600}
     .menu a{opacity:.9} .menu a:hover{opacity:1;color:var(--accent)}
     .cta-top{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:8px;
-      padding:10px 14px;border-radius:999px;font-weight:700;
-      border:1px solid var(--line);background:#151b2b;
-      transition:transform .2s ease, filter .2s ease, box-shadow .2s ease;
-      box-shadow:0 6px 14px rgba(0,0,0,.24)
-    }
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:700;border:1px solid var(--line);background:#151b2b;transition:transform .2s ease, filter .2s ease}
     .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn.primary{background:linear-gradient(180deg, #f6c23e, #f2b11c); color:#111; border-color:rgba(0,0,0,.1)}
 
@@ -79,70 +70,49 @@
     .muted{color:var(--muted)}
     .sep{height:1px;background:var(--line);border-radius:999px;margin:22px 0}
 
-    /* GRID */
+    /* PROJECTS */
     .grid{display:grid;gap:18px}
     .grid.cols3{grid-template-columns:repeat(3,1fr)}
     @media (max-width:1024px){.grid.cols3{grid-template-columns:1fr 1fr}}
     @media (max-width:720px){.grid.cols3{grid-template-columns:1fr}}
 
-    /* PROJECT CARDS */
     .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .project{display:flex;flex-direction:column}
     .project .thumb{height:240px;overflow:hidden;border-bottom:1px solid var(--line)}
     .project .thumb img{width:100%;height:100%;object-fit:cover}
     .p16{padding:16px}
-    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
-    .tag{
-      font-size:12px;padding:.34rem .66rem;border-radius:999px;
-      border:1px solid var(--line);background:#0f1322;color:#cdd6e3;
-      box-shadow:inset 0 -1px 0 rgba(255,255,255,.04)
-    }
-    .actions{display:flex;gap:10px;flex-wrap:wrap}
-    .actions .btn{padding:8px 14px;font-weight:800}
+    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+    .tag{font-size:12px;padding:.32rem .58rem;border-radius:999px;border:1px solid var(--line);background:#0f1322}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+
+    /* KPIs */
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:20px}
+    .kpi{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;text-align:center;box-shadow:var(--shadow)}
+    .kpi .icon{font-size:28px;display:block;margin-bottom:8px}
+    .kpi .num{font-size:36px;font-weight:800;line-height:1}
+    .kpi .label{margin-top:6px;color:var(--muted);font-weight:600}
+    @media (max-width:980px){.kpis{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.kpis{grid-template-columns:1fr}}
 
     /* ABOUT */
-    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
+    .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
     @media (max-width:980px){.about-grid{grid-template-columns:1fr}}
 
-    /* MOUNTAIN CTA */
-    .band{
-      position:relative; padding:68px 0; margin-top:10px;
-      background:url('https://images.unsplash.com/photo-1482192596544-9eb780fc7f66?q=80&w=1800&auto=format&fit=crop') center/cover no-repeat;
-      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    }
-    .band::before{
-      content:""; position:absolute; inset:0;
-      background:linear-gradient(180deg, rgba(11,15,26,.55), rgba(11,15,26,.85));
-      backdrop-filter:saturate(140%) blur(0.5px)
-    }
-    .band > .container{position:relative; z-index:1; text-align:center}
-    .band h3{font-size:clamp(24px,4vw,36px); margin:0 0 10px}
-    .band p{color:#d9e1ea; margin:0 0 16px}
-
-    /* STATS (KPI counters) */
-    .stats{padding:26px 0 8px}
-    .stats-grid{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
-    @media (max-width:980px){.stats-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.stats-grid{grid-template-columns:1fr}}
-    .kpi-card{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:16px;
-      padding:18px;
-      text-align:center;
-      box-shadow:var(--shadow);
-      transition:transform .18s ease, filter .18s ease
-    }
-    .kpi-card:hover{transform:translateY(-3px); filter:brightness(1.04)}
-    .kpi-icon{font-size:22px; opacity:.9; margin-bottom:6px}
-    .kpi-number{font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:.3px}
-    .kpi-number.suffix::after{content:"+"; margin-left:2px; font-weight:700; opacity:.9}
-    .kpi-title{margin-top:6px; color:var(--muted); font-weight:600; letter-spacing:.02em}
+    /* TRAINING cards (enmarcado) */
+    .train-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px}
+    @media (max-width:920px){.train-grid{grid-template-columns:1fr}}
+    .train-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow)}
+    .train-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+    .train-year{font-weight:800;color:#ffd166;letter-spacing:.1em}
+    .train-badge{font-size:12px;text-transform:uppercase;color:#c6cfdb;background:#0f1524;border:1px solid var(--line);padding:6px 10px;border-radius:999px}
+    .train-inst{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#aab3c2;margin-bottom:8px}
+    .train-list{margin:8px 0 0 18px;color:var(--muted)}
 
     /* CONTACT (with icons) */
     .contact-grid{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
     @media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
+
     .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
     .contact-top{display:flex;align-items:center;gap:14px}
     .icon-circle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#0f1524;border:1px solid var(--line);box-shadow:var(--shadow)}
@@ -186,7 +156,7 @@
         </div>
       </div>
 
-      <!-- Portrait (single use) -->
+      <!-- Portrait (single use, sin marco) -->
       <div class="hero-portrait">
         <img class="portrait" src="/assets/brand/portrait.png" alt="Daiana Beltrán portrait" />
       </div>
@@ -198,7 +168,7 @@
     <section id="projects" class="container">
       <p class="subkicker">PROJECTS</p>
       <h2>Featured projects</h2>
-      <p class="muted">SQL + Power BI projects with clear pipelines, validations, and business-focused visuals.</p>
+      <p class="muted">End-to-end SQL + Power BI with quality-safe views and BI layers ready for reporting.</p>
 
       <div class="grid cols3" style="margin-top:14px">
         <!-- OLIST -->
@@ -208,7 +178,7 @@
           </div>
           <div class="p16">
             <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
-            <p class="muted">T-SQL pipeline with <code>quality.*</code> views and a <code>bi.*</code> layer ready for Power BI. KPIs for sales, customers, and operations (lead time, on-time rate).</p>
+            <p class="muted">T-SQL pipeline with <code>quality.*</code> views and a <code>bi.*</code> layer ready for Power BI. KPIs for sales, customers and operations (lead time, on-time rate).</p>
             <div class="tagbar">
               <span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Power BI</span><span class="tag">Data Quality</span>
             </div>
@@ -219,7 +189,7 @@
           </div>
         </article>
 
-        <!-- GLOBAL SUPERSTORE -->
+        <!-- GLOBAL -->
         <article class="card project">
           <div class="thumb">
             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Global Superstore rebuild" />
@@ -249,38 +219,35 @@
           </div>
         </article>
       </div>
-    </section>
 
-    <!-- KPI COUNTERS -->
-    <section class="stats container" aria-label="Quick stats">
-      <div class="stats-grid">
-        <div class="kpi-card">
-          <div class="kpi-icon">🏅</div>
-          <div class="kpi-number" data-target="10">0</div>
-          <div class="kpi-title">Achievements</div>
+      <!-- KPI counters -->
+      <div class="kpis" id="kpis">
+        <div class="kpi">
+          <span class="icon">🏅</span>
+          <div class="num" data-target="10">0</div>
+          <div class="label">Achievements</div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-icon">📁</div>
-          <!-- cambia a 3 cuando tengas el tercero -->
-          <div class="kpi-number" data-target="2">0</div>
-          <div class="kpi-title">Projects</div>
+        <div class="kpi">
+          <span class="icon">📁</span>
+          <div class="num" data-target="3">0</div>
+          <div class="label">Projects</div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-icon">🤝</div>
-          <div class="kpi-number suffix" data-target="500">0</div>
-          <div class="kpi-title">Connections</div>
+        <div class="kpi">
+          <span class="icon">🤝</span>
+          <div class="num" data-target="500">0</div>
+          <div class="label">Connections</div>
         </div>
-        <div class="kpi-card">
-          <div class="kpi-icon">☕</div>
-          <div class="kpi-number" data-target="1000">0</div>
-          <div class="kpi-title">Cups of coffee</div>
+        <div class="kpi">
+          <span class="icon">☕️</span>
+          <div class="num" data-target="1000">0</div>
+          <div class="label">Cups of coffee</div>
         </div>
       </div>
     </section>
 
     <div class="sep container"></div>
 
-    <!-- ABOUT (no portrait here) -->
+    <!-- ABOUT (sin foto aquí para no duplicar) -->
     <section id="about" class="container">
       <p class="subkicker">ABOUT</p>
       <div class="about-grid">
@@ -297,13 +264,55 @@
           </div>
 
           <h3 style="margin-top:12px">Training</h3>
-          <ul class="muted" style="margin:8px 0 0 18px; line-height:1.6">
-            <li><strong>Data Science Career Program (International)</strong> — EducaciónIT & Manhattan University (in progress, Dec 2025). ~275h: SQL, Python (pandas), Power BI (PL-300), Azure fundamentals, basic ML, Data Engineering.</li>
-            <li><strong>Bootcamp Data Analytics — Unicorn Academy (2025)</strong>. Credential ID: RAkqVb2n.</li>
-            <li>B.A. in Psychology — Universidad de Flores (2017–2024): applied statistics and quantitative/qualitative methods.</li>
-          </ul>
 
-          <div class="actions" style="margin-top:14px">
+          <!-- Training enmarcado -->
+          <div class="train-grid">
+            <div class="train-card">
+              <div class="train-top">
+                <div class="train-year">2025 — IN PROGRESS</div>
+                <div class="train-badge">International</div>
+              </div>
+              <div class="train-inst">EducaciónIT · Manhattan University</div>
+              <p class="muted" style="margin:6px 0 8px">
+                Data Science Career Program (~275h).
+              </p>
+              <ul class="train-list">
+                <li>SQL, Python (pandas), Power BI (PL-300 track).</li>
+                <li>Azure fundamentals, basic ML, Data Engineering.</li>
+              </ul>
+            </div>
+
+            <div class="train-card">
+              <div class="train-top">
+                <div class="train-year">2025</div>
+                <div class="train-badge">RAkqVb2n</div>
+              </div>
+              <div class="train-inst">Unicorn Academy</div>
+              <p class="muted" style="margin:6px 0 8px">
+                Bootcamp Data Analytics.
+              </p>
+              <ul class="train-list">
+                <li>Dimensional modeling, DAX & Power Query.</li>
+                <li>BI best practices and storytelling.</li>
+              </ul>
+            </div>
+
+            <div class="train-card" style="grid-column:1/-1">
+              <div class="train-top">
+                <div class="train-year">2017 — 2024</div>
+                <div class="train-badge">UFLO</div>
+              </div>
+              <div class="train-inst">Universidad de Flores</div>
+              <p class="muted" style="margin:6px 0 8px">
+                B.A. in Psychology.
+              </p>
+              <ul class="train-list">
+                <li>Applied statistics and quantitative/qualitative methods.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="actions" style="margin-top:16px">
             <a class="btn primary" href="mailto:daianabeltran@gmail.com">Email me</a>
             <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
@@ -313,16 +322,7 @@
       </div>
     </section>
 
-    <!-- MOUNTAIN BAND -->
-    <section class="band" aria-label="More projects band">
-      <div class="container">
-        <h3>More projects on <span style="color:var(--accent)">GitHub</span></h3>
-        <p>I love solving business problems and uncovering hidden data stories.</p>
-        <a class="btn primary" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Visit GitHub</a>
-      </div>
-    </section>
-
-    <!-- CONTACT with yellow icons -->
+    <!-- CONTACT -->
     <section id="contact" class="container">
       <p class="subkicker">CONTACT</p>
       <h2>Let’s talk</h2>
@@ -409,39 +409,37 @@
   }
   </script>
 
-  <!-- year -->
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
-
-  <!-- animated counters -->
+  <!-- Year + KPI animation -->
   <script>
-  (() => {
-    const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-    const USE_K = true;
-    const fmt = n => {
-      if (!USE_K) return n.toLocaleString();
-      if (n >= 1000) return (n/1000).toFixed(n%1000===0?0:1).replace(/\.0$/,'') + "k";
-      return n.toLocaleString();
-    };
-    function animateCount(el, target, duration = 1500) {
-      const start = performance.now();
-      function frame(now){
-        const p = Math.min((now - start)/duration, 1);
-        const val = Math.floor(target * easeOutCubic(p));
-        el.textContent = fmt(val);
-        if (p < 1) requestAnimationFrame(frame);
-      }
-      requestAnimationFrame(frame);
-    }
-    const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target, to = parseInt(el.dataset.target||'0',10);
-        animateCount(el, to);
-        obs.unobserve(el);
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    // Animate KPI counters when visible
+    const elKpis = document.getElementById('kpis');
+    const animate = () => {
+      document.querySelectorAll('.kpi .num').forEach(n => {
+        const target = +n.getAttribute('data-target');
+        const duration = 1400; // ms
+        const start = performance.now();
+        const from = 0;
+        const format = (val) => {
+          if (target === 500) return Math.round(val) + '+';   // 500+
+          if (target >= 1000) return Math.round(val/10)/100 + 'k'; // show ~1k
+          return Math.round(val);
+        };
+        const step = (t) => {
+          const p = Math.min((t - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          n.textContent = format(from + (target - from) * ease);
+          if (p < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
       });
-    }, { threshold: 0.6 });
-    document.querySelectorAll('.kpi-number').forEach(el => io.observe(el));
-  })();
+    };
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { animate(); io.disconnect(); } });
+    }, {threshold:.35});
+    io.observe(elKpis);
   </script>
 </body>
 </html>
+
