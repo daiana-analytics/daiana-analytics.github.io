@@ -4,113 +4,101 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Daiana Beltrán — Data Analyst (SQL · Power BI)</title>
-  <meta name="description" content="Portfolio de Daiana Beltrán. Proyectos SQL + Power BI, experiencia y contacto.">
+  <meta name="description" content="Portfolio de Daiana Beltrán. Proyectos SQL + Power BI con data pipelines claros, validaciones y dashboards de negocio.">
   <meta name="author" content="Daiana Beltrán">
 
-  <!-- Open Graph -->
+  <!-- OpenGraph -->
   <meta property="og:title" content="Daiana Beltrán — Data Analyst (SQL · Power BI)">
   <meta property="og:description" content="Proyectos SQL + Power BI. Contacto, CV y enlaces.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://daiana-analytics.github.io">
-  <meta property="og:image" content="https://github.com/daiana-analytics/daiana-analytics/raw/main/banner-linkedin.gif">
+  <meta property="og:image" content="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png">
 
   <link rel="icon" href="/favicon.ico">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#0b0f1a;           /* fondo principal */
-      --panel:#0f1422;        /* paneles y cards */
-      --panel-2:#0b1320;      /* panel alterno */
-      --line:rgba(255,255,255,.08);
-      --muted:#9aa4b2;
-      --text:#e9eef6;
+      --bg:#0b0b0d;           /* negro suave */
+      --panel:#111113;        /* panel oscuro */
+      --muted:#9aa3ad;        /* gris texto secundario */
+      --text:#eef2f6;         /* texto principal */
       --accent:#f2b11c;       /* dorado */
-      --accent-2:#0ea5e9;     /* celeste sutil */
+      --line:rgba(255,255,255,.08);
       --radius:18px;
-      --shadow:0 14px 40px rgba(0,0,0,.35);
+      --shadow:0 18px 40px rgba(0,0,0,.45);
+      --container:1220px;
+      --space:40px;           /* espacio base */
     }
-
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
+    .container{max-width:var(--container);margin:0 auto;padding:0 28px}
 
-    .container{max-width:1200px;margin:0 auto;padding:26px}
-
-    /* HEADER / NAV */
-    header{position:sticky;top:0;z-index:50;background:rgba(11,15,26,.72);
-      backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.3px}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
-    .menu{display:flex;gap:22px;font-weight:600}
+    /* NAV */
+    header{position:sticky;top:0;z-index:50;background:rgba(7,7,8,.72);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+    .nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px}
+    .brand .dot{width:12px;height:12px;border-radius:50%;background:var(--accent)}
+    .menu{display:flex;gap:26px;font-weight:600}
     .menu a{opacity:.9} .menu a:hover{opacity:1;color:var(--accent)}
-    .cta-row{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;
-      font-weight:700;border:1px solid var(--line);background:#11182b;transition:all .15s ease}
+
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:14px;font-weight:700;border:1px solid var(--line);background:#141416;transition:.2s}
     .btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
-    .btn.primary{background:linear-gradient(180deg,#f6c23e,#f2b11c);color:#111;border-color:rgba(0,0,0,.1)}
-    .btn.alt{background:#0e2437;border-color:#154660}
+    .btn.primary{background:linear-gradient(180deg,#f7c94f,#f2b11c);color:#111;border-color:rgba(0,0,0,.12)}
+    .btn.alt{background:#0f2435;border-color:#154a63}
+
+    /* HERO */
+    .hero{padding:84px 0 36px}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .95fr;align-items:center;gap:56px}
+    .kicker{font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+    h1{font-size:56px;line-height:1.05;margin:0 0 12px;letter-spacing:.2px}
+    .lead{font-size:18px;color:var(--muted);max-width:680px;margin:0 0 26px}
+    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-portrait{height:520px;max-width:480px;margin-inline:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.7))}
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr;gap:32px}
+      h1{font-size:40px}
+      .hero-portrait{height:420px}
+    }
 
     /* SECTION */
-    section{padding:34px 0}
-    .kicker{font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
-    h1,h2,h3{margin:0 0 10px}
-    h1{font-size:40px;line-height:1.12}
-    h2{font-size:28px}
-    .muted{color:var(--muted)}
-    .sep{height:1px;background:var(--line);border-radius:999px;margin:26px 0}
+    section{padding:64px 0}
+    .section-title{font-size:36px;margin:0 0 6px}
+    .section-sub{color:var(--muted);margin:0 0 18px}
+    .sep{height:1px;background:var(--line);border-radius:999px;margin:32px 0}
 
-    /* GRID / PROJECT CARDS GRANDES */
-    .grid{display:grid;gap:22px}
+    /* PROJECTS */
+    .grid{display:grid;gap:24px}
     .grid.cols3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:1080px){.grid.cols3{grid-template-columns:1fr 1fr}}
+    @media (max-width:1100px){.grid.cols3{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:760px){.grid.cols3{grid-template-columns:1fr}}
 
-    .card{background:linear-gradient(180deg,var(--panel),var(--panel-2));
-      border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
-    .p16{padding:16px} .p20{padding:20px}
-
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .project{display:flex;flex-direction:column;min-height:100%}
-    .project .thumb{aspect-ratio:16/9;overflow:hidden;border-bottom:1px solid var(--line)}
-    .project .thumb img{width:100%;height:100%;object-fit:cover;transform:translateZ(0);transition:transform .35s cubic-bezier(.2,.6,.2,1)}
-    .project:hover .thumb img{transform:scale(1.03)}
-    .project h3{margin:12px 0 8px}
-    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
-    .tag{font-size:12px;padding:.34rem .62rem;border-radius:999px;border:1px solid var(--line);background:#0f1324}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
+    .project .thumb{height:260px;overflow:hidden;border-bottom:1px solid var(--line)}
+    .project .thumb img{width:100%;height:100%;object-fit:cover;transform:scale(1.02);transition:transform .4s ease}
+    .project:hover .thumb img{transform:scale(1.06)}
+    .p24{padding:24px}
+    .project h3{font-size:20px;margin:6px 0 8px}
+    .muted{color:var(--muted)}
+    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 2px}
+    .tag{font-size:12px;padding:.36rem .64rem;border-radius:999px;border:1px solid var(--line);background:#0f1116}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 
-    /* ABOUT: avatar con fondo integrado (sin blanco plano) */
-    .about{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
-    @media (max-width:980px){.about{grid-template-columns:1fr}}
-    .avatar{
-      width:380px;height:440px;border-radius:22px;
-      background:
-        radial-gradient(80% 65% at 50% 35%, #15223a 0%, #0f1422 60%, transparent 100%),
-        radial-gradient(50% 90% at 70% 90%, rgba(14,165,233,.18), transparent 60%),
-        #0f1422;
-      box-shadow:0 20px 60px rgba(0,0,0,.45), inset 0 0 0 1px var(--line);
-      position:relative;margin-inline:auto;
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;
-    }
-    /* Pintamos tu foto como "contenido" para evitar bordes blancos duros */
-    .avatar::after{
-      content:"";
-      background-image:url("assets/brand/portrait.png");
-      background-size:contain;background-repeat:no-repeat;background-position:center bottom;
-      position:absolute;inset:0;transform:translateZ(0);
-      filter:drop-shadow(0 12px 18px rgba(0,0,0,.35));
-    }
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:start}
+    .list{margin:10px 0 0 18px;line-height:1.6}
+    @media (max-width:980px){.about-grid{grid-template-columns:1fr}}
 
     /* CONTACT */
-    .contact-cards{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
-    .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center}
-    @media (max-width:980px){.contact-cards{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.contact-cards{grid-template-columns:1fr}}
+    .contact-cards{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+    .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+    .contact-card h3{margin:6px 0 0}
+    @media (max-width:980px){.contact-cards{grid-template-columns:1fr}}
 
-    footer{padding:28px 0;color:var(--muted);font-size:14px}
+    footer{padding:40px 0;color:var(--muted);font-size:14px}
   </style>
 </head>
 <body>
@@ -132,136 +120,155 @@
     </div>
   </header>
 
-  <main class="container">
+  <main>
 
-    <!-- PROYECTOS (arriba, tarjetas grandes tipo portfolio) -->
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="kicker">HELLO!</div>
+          <h1>Soy <span style="color:var(--accent)">Daiana</span><br/>Data Analyst (SQL · Power BI)</h1>
+          <p class="lead">SQL y Power BI para transformar datos en decisiones. Sitio simple con mis proyectos destacados, CV y contacto.</p>
+          <div class="cta-row">
+            <a href="#proyectos" class="btn primary">Ver proyectos</a>
+            <a href="#contacto" class="btn">Contactar</a>
+          </div>
+        </div>
+        <div>
+          <!-- FOTO: usar PNG transparente en assets/brand/portrait.png -->
+          <img class="hero-portrait" src="assets/brand/portrait.png" alt="Daiana Beltrán">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROYECTOS -->
     <section id="proyectos">
-      <div class="kicker">Projects</div>
-      <h1>Proyectos Destacados</h1>
-      <p class="muted">Entrego proyectos <strong>SQL + Power BI</strong> con pipelines claros, validaciones y visualizaciones enfocadas en negocio.</p>
+      <div class="container">
+        <div class="kicker">PROJECTS</div>
+        <h2 class="section-title">Proyectos Destacados</h2>
+        <p class="section-sub">Entrego proyectos <strong>SQL + Power BI</strong> con pipelines claros, validaciones y visualizaciones enfocadas en negocio.</p>
 
-      <div class="grid cols3" style="margin-top:16px">
-        <!-- OLIST -->
-        <article class="card project">
-          <a class="thumb" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">
-            <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Olist — Page 1 Summary">
-          </a>
-          <div class="p20">
-            <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
-            <p class="muted">Pipeline T-SQL con vistas <code>quality.*</code> y capa <code>bi.*</code> lista para Power BI. KPIs de ventas, clientes y operación (lead time / on-time).</p>
-            <div class="tagbar">
-              <span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Power BI</span><span class="tag">Data Quality</span>
-            </div>
-            <div class="actions">
-              <a class="btn primary" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">Ver repo</a>
-              <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql/tree/main/docs/screenshots" target="_blank" rel="noopener">Ver capturas</a>
-            </div>
-          </div>
-        </article>
+        <div class="grid cols3" style="margin-top:14px">
 
-        <!-- GLOBAL SUPERSTORE (si querés, cambia a tu repo cuando esté listo) -->
-        <article class="card project">
-          <a class="thumb" href="https://github.com/daiana-analytics/global_superstore_finance" target="_blank" rel="noopener">
-            <img src="https://raw.githubusercontent.com/daiana-analytics/global_superstore_finance/main/dashboards/powerbi/assets/01-financial-overview.png" alt="Global Superstore Finance">
-          </a>
-          <div class="p20">
-            <h3>Global Superstore — Financial Analytics</h3>
-            <p class="muted">Modelo dimensional + KPIs P&L (YTD, YoY, MoM) y medidas DAX. Rebuild con visuales más limpios y balanceados.</p>
-            <div class="tagbar"><span class="tag">Power BI</span><span class="tag">Finance</span><span class="tag">Modelado Dimensional</span></div>
-            <div class="actions">
-              <a class="btn" href="https://github.com/daiana-analytics/global_superstore_finance" target="_blank" rel="noopener">Ver repo</a>
+          <!-- OLIST -->
+          <article class="card project">
+            <a class="thumb" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">
+              <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Olist — Page 1 Summary">
+            </a>
+            <div class="p24">
+              <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
+              <p class="muted">Pipeline T-SQL con vistas <code>quality.*</code> y capa <code>bi.*</code> lista para Power BI. KPIs de ventas, clientes y operación (lead time, on-time).</p>
+              <div class="tagbar">
+                <span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Power BI</span><span class="tag">Data Quality</span>
+              </div>
+              <div class="actions">
+                <a class="btn primary" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">Ver repo</a>
+                <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql/tree/main/docs/screenshots" target="_blank" rel="noopener">Ver capturas</a>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
 
-        <!-- SNIPPETS -->
-        <article class="card project">
-          <a class="thumb" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop" alt="Notas y Snippets">
-          </a>
-          <div class="p20">
-            <h3>Notas & Snippets</h3>
-            <p class="muted">Apuntes cortos de SQL/DAX y pequeñas pruebas que voy subiendo al repositorio.</p>
-            <div class="tagbar"><span class="tag">SQL</span><span class="tag">DAX</span><span class="tag">Tips</span></div>
-            <div class="actions">
-              <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Ver en GitHub</a>
+          <!-- GLOBAL (placeholder de rebuild) -->
+          <article class="card project">
+            <a class="thumb" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1400&auto=format&fit=crop" alt="Global Superstore Finance">
+            </a>
+            <div class="p24">
+              <h3>Global Superstore — Financial Analytics (rebuild)</h3>
+              <p class="muted">Modelo estrella + KPIs P&L (YTD, YoY, MoM) y medidas DAX de margen y descuento. Publicación cuando Olist tenga 2–3 páginas.</p>
+              <div class="tagbar"><span class="tag">Power BI</span><span class="tag">Finance</span><span class="tag">Modelado Dimensional</span></div>
+              <div class="actions"><a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Ver avance</a></div>
             </div>
-          </div>
-        </article>
+          </article>
+
+          <!-- SNIPPETS -->
+          <article class="card project">
+            <a class="thumb" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1400&auto=format&fit=crop" alt="Notas y Snippets">
+            </a>
+            <div class="p24">
+              <h3>Notas & Snippets</h3>
+              <p class="muted">Apuntes cortos de SQL/DAX y pequeñas pruebas que voy subiendo al repositorio.</p>
+              <div class="tagbar"><span class="tag">SQL</span><span class="tag">DAX</span><span class="tag">Tips</span></div>
+              <div class="actions"><a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Ver en GitHub</a></div>
+            </div>
+          </article>
+
+        </div>
       </div>
     </section>
 
     <div class="sep"></div>
 
-    <!-- SOBRE MÍ (debajo de proyectos) -->
-    <section id="sobre" class="about">
-      <div>
-        <div class="kicker">Sobre mí</div>
-        <h2>Daiana Beltrán · Data Analyst (SQL · Power BI)</h2>
-        <p class="muted">
-          Analista de Datos con foco en <strong>SQL (T-SQL, MySQL)</strong> y <strong>Power BI (DAX, Power Query M)</strong>.
-          Diseño modelos dimensionales (FACT/DIM), pipelines ETL y dashboards orientados a KPIs (P&L, Margen Bruto %, YTD/YoY/MoM, tiempos de entrega).
-          Me interesan la calidad de datos, la validación y la toma de decisiones basada en métricas.
-        </p>
+    <!-- SOBRE MÍ -->
+    <section id="sobre">
+      <div class="container about-grid">
+        <div>
+          <div class="kicker">ABOUT</div>
+          <h2 class="section-title">Daiana Beltrán · Data Analyst (SQL · Power BI)</h2>
+          <p class="muted">
+            Analista de Datos con foco en <strong>SQL (T-SQL, MySQL)</strong> y <strong>Power BI (DAX, Power Query M)</strong>.
+            Diseño modelos dimensionales (FACT/DIM), pipelines ETL y dashboards orientados a KPIs (P&L, Margen Bruto %, YTD/YoY/MoM, tiempos de entrega).
+            Me interesan la calidad de datos, la validación y la toma de decisiones basada en métricas.
+          </p>
 
-        <div class="tagbar" style="margin:12px 0">
-          <span class="tag">T-SQL / MySQL</span><span class="tag">DAX · Power Query</span>
-          <span class="tag">Modelado Dimensional</span><span class="tag">Git/GitHub</span>
-          <span class="tag">Excel/Sheets</span><span class="tag">MongoDB (aprendizaje)</span>
+          <div class="tagbar" style="margin:12px 0 0">
+            <span class="tag">T-SQL / MySQL</span><span class="tag">DAX · Power Query</span>
+            <span class="tag">Modelado Dimensional</span><span class="tag">Git/GitHub</span>
+            <span class="tag">Excel/Sheets</span><span class="tag">MongoDB (aprendizaje)</span>
+          </div>
+
+          <h3 style="margin:22px 0 8px">Formación</h3>
+          <ul class="muted list">
+            <li><strong>Data Science Career Program (Internacional)</strong> — EducaciónIT & Manhattan University (en curso, prev. Dic 2025). ~275h: SQL, Python (pandas), Power BI (PL-300), Azure fundamentals, ML básico, Data Engineering.</li>
+            <li><strong>Bootcamp Data Analytics — Unicorn Academy (2025)</strong>. Credencial ID: RAkqVb2n.</li>
+            <li>Lic. en Psicología — Universidad de Flores (2017–2024): estadística aplicada y métodos cuantitativos/cualitativos.</li>
+          </ul>
+
+          <div class="actions" style="margin-top:16px">
+            <a class="btn primary" href="mailto:daianabeltran@gmail.com">Escribime</a>
+            <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn alt" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
 
-        <h3 style="margin-top:12px">Formación</h3>
-        <ul class="muted" style="margin:8px 0 0 18px; line-height:1.6">
-          <li><strong>Data Science Career Program (Internacional)</strong> — EducaciónIT & Manhattan University (en curso, prev. Dic 2025). ~275h: SQL, Python (pandas), Power BI (PL-300), Azure fundamentals, ML básico, Data Engineering.</li>
-          <li><strong>Bootcamp Data Analytics — Unicorn Academy (2025)</strong>. Credencial ID: RAkqVb2n.</li>
-          <li>Lic. en Psicología — Universidad de Flores (2017–2024): estadística aplicada y métodos cuantitativos/cualitativos.</li>
-        </ul>
-
-        <div class="actions" style="margin-top:14px">
-          <a class="btn primary" href="mailto:daianabeltran@gmail.com">Escribime</a>
-          <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn alt" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
+        <div>
+          <img class="hero-portrait" src="assets/brand/portrait.png" alt="Daiana Beltrán">
         </div>
       </div>
-
-      <!-- Avatar con fondo integrado -->
-      <div class="avatar" title="Daiana Beltrán"></div>
     </section>
 
     <div class="sep"></div>
 
-    <!-- CONTACTO / CTA -->
+    <!-- CONTACTO -->
     <section id="contacto">
-      <div class="kicker">Contacto</div>
-      <h2>¿Hablamos?</h2>
-      <p class="muted">Disponible para roles remotos (LATAM/EE. UU.). Respondo por email o LinkedIn.</p>
+      <div class="container">
+        <div class="kicker">CONTACT</div>
+        <h2 class="section-title">¿Hablamos?</h2>
+        <p class="section-sub">Disponible para roles remotos (LATAM/EE. UU.). Respondo por email o LinkedIn.</p>
 
-      <div class="contact-cards" style="margin-top:14px">
-        <div class="contact-card">
-          <div class="muted">Email</div>
-          <h3><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></h3>
-        </div>
-        <div class="contact-card">
-          <div class="muted">LinkedIn</div>
-          <h3><a href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">/daiana-beltran</a></h3>
-        </div>
-        <div class="contact-card">
-          <div class="muted">GitHub</div>
-          <h3><a href="https://github.com/daiana-analytics" target="_blank" rel="noopener">@daiana-analytics</a></h3>
-        </div>
-        <div class="contact-card">
-          <div class="muted">CV / Resume</div>
-          <div class="actions" style="justify-content:center;margin-top:8px">
-            <a class="btn primary" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a>
-            <a class="btn" href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">EN</a>
+        <div class="contact-cards" style="margin-top:12px">
+          <div class="contact-card">
+            <div class="muted">Email</div>
+            <h3><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></h3>
+          </div>
+          <div class="contact-card">
+            <div class="muted">LinkedIn</div>
+            <h3><a href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">/daiana-beltran</a></h3>
+          </div>
+          <div class="contact-card">
+            <div class="muted">GitHub</div>
+            <h3><a href="https://github.com/daiana-analytics" target="_blank" rel="noopener">@daiana-analytics</a></h3>
           </div>
         </div>
       </div>
     </section>
 
     <footer>
-      <div class="sep"></div>
-      © <span id="y"></span> Daiana Beltrán · Hecho con GitHub Pages
+      <div class="container">
+        <div class="sep"></div>
+        © <span id="y"></span> Daiana Beltrán · Hecho con GitHub Pages
+      </div>
     </footer>
   </main>
 
@@ -274,12 +281,16 @@
     "jobTitle":"Data Analyst",
     "email":"mailto:daianabeltran@gmail.com",
     "url":"https://daiana-analytics.github.io",
-    "sameAs":["https://github.com/daiana-analytics","https://www.linkedin.com/in/daiana-beltran"],
+    "sameAs":[
+      "https://github.com/daiana-analytics",
+      "https://www.linkedin.com/in/daiana-beltran"
+    ],
     "knowsAbout":["SQL","Power BI","DAX","Power Query","Modelado dimensional","ETL","KPIs financieros"]
   }
   </script>
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
+
 
 
