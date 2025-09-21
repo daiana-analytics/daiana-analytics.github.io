@@ -41,7 +41,13 @@
     .menu{display:flex;gap:22px;font-weight:600}
     .menu a{opacity:.9} .menu a:hover{opacity:1;color:var(--accent)}
     .cta-top{display:flex;gap:10px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;font-weight:700;border:1px solid var(--line);background:#151b2b;transition:transform .2s ease, filter .2s ease}
+    .btn{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 14px;border-radius:999px;font-weight:700;
+      border:1px solid var(--line);background:#151b2b;
+      transition:transform .2s ease, filter .2s ease, box-shadow .2s ease;
+      box-shadow:0 6px 14px rgba(0,0,0,.24)
+    }
     .btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
     .btn.primary{background:linear-gradient(180deg, #f6c23e, #f2b11c); color:#111; border-color:rgba(0,0,0,.1)}
 
@@ -73,20 +79,26 @@
     .muted{color:var(--muted)}
     .sep{height:1px;background:var(--line);border-radius:999px;margin:22px 0}
 
-    /* PROJECTS */
+    /* GRID */
     .grid{display:grid;gap:18px}
     .grid.cols3{grid-template-columns:repeat(3,1fr)}
     @media (max-width:1024px){.grid.cols3{grid-template-columns:1fr 1fr}}
     @media (max-width:720px){.grid.cols3{grid-template-columns:1fr}}
 
+    /* PROJECT CARDS */
     .card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
     .project{display:flex;flex-direction:column}
     .project .thumb{height:240px;overflow:hidden;border-bottom:1px solid var(--line)}
     .project .thumb img{width:100%;height:100%;object-fit:cover}
     .p16{padding:16px}
-    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
-    .tag{font-size:12px;padding:.32rem .58rem;border-radius:999px;border:1px solid var(--line);background:#0f1322}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px}
+    .tag{
+      font-size:12px;padding:.34rem .66rem;border-radius:999px;
+      border:1px solid var(--line);background:#0f1322;color:#cdd6e3;
+      box-shadow:inset 0 -1px 0 rgba(255,255,255,.04)
+    }
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .actions .btn{padding:8px 14px;font-weight:800}
 
     /* ABOUT */
     .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center}
@@ -107,25 +119,11 @@
     .band h3{font-size:clamp(24px,4vw,36px); margin:0 0 10px}
     .band p{color:#d9e1ea; margin:0 0 16px}
 
-    /* CONTACT (with icons) */
-    .contact-grid{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
-    @media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
-
-    .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
-    .contact-top{display:flex;align-items:center;gap:14px}
-    .icon-circle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#0f1524;border:1px solid var(--line);box-shadow:var(--shadow)}
-    .icon-circle svg{width:26px;height:26px;fill:var(--accent)}
-    .contact-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
-    .contact-value{font-weight:700}
-    .contact-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
-
-    /* ====== STATS (KPI counters) ====== */
+    /* STATS (KPI counters) */
     .stats{padding:26px 0 8px}
     .stats-grid{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
     @media (max-width:980px){.stats-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.stats-grid{grid-template-columns:1fr}}
-
     .kpi-card{
       background:var(--panel);
       border:1px solid var(--line);
@@ -140,6 +138,20 @@
     .kpi-number{font-size:clamp(24px,4vw,34px); font-weight:800; letter-spacing:.3px}
     .kpi-number.suffix::after{content:"+"; margin-left:2px; font-weight:700; opacity:.9}
     .kpi-title{margin-top:6px; color:var(--muted); font-weight:600; letter-spacing:.02em}
+
+    /* CONTACT (with icons) */
+    .contact-grid{display:grid;gap:18px;grid-template-columns:repeat(4,1fr)}
+    @media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
+    .contact-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px}
+    .contact-top{display:flex;align-items:center;gap:14px}
+    .icon-circle{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#0f1524;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .icon-circle svg{width:26px;height:26px;fill:var(--accent)}
+    .contact-label{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+    .contact-value{font-weight:700}
+    .contact-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+
+    footer{padding:28px 0;color:var(--muted);font-size:14px}
   </style>
 </head>
 <body>
@@ -186,7 +198,7 @@
     <section id="projects" class="container">
       <p class="subkicker">PROJECTS</p>
       <h2>Featured projects</h2>
-      <p class="muted">End-to-end SQL + Power BI with quality-safe views and BI layers ready for reporting.</p>
+      <p class="muted">SQL + Power BI projects with clear pipelines, validations, and business-focused visuals.</p>
 
       <div class="grid cols3" style="margin-top:14px">
         <!-- OLIST -->
@@ -196,7 +208,7 @@
           </div>
           <div class="p16">
             <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
-            <p class="muted">T-SQL pipeline with <code>quality.*</code> views and a <code>bi.*</code> layer ready for Power BI. KPIs for sales, customers and operations (lead time, on-time rate).</p>
+            <p class="muted">T-SQL pipeline with <code>quality.*</code> views and a <code>bi.*</code> layer ready for Power BI. KPIs for sales, customers, and operations (lead time, on-time rate).</p>
             <div class="tagbar">
               <span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Power BI</span><span class="tag">Data Quality</span>
             </div>
@@ -207,7 +219,7 @@
           </div>
         </article>
 
-        <!-- GLOBAL -->
+        <!-- GLOBAL SUPERSTORE -->
         <article class="card project">
           <div class="thumb">
             <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Global Superstore rebuild" />
@@ -239,7 +251,7 @@
       </div>
     </section>
 
-    <!-- ====== KPI COUNTERS ====== -->
+    <!-- KPI COUNTERS -->
     <section class="stats container" aria-label="Quick stats">
       <div class="stats-grid">
         <div class="kpi-card">
@@ -249,7 +261,8 @@
         </div>
         <div class="kpi-card">
           <div class="kpi-icon">📁</div>
-          <div class="kpi-number" data-target="15">0</div>
+          <!-- cambia a 3 cuando tengas el tercero -->
+          <div class="kpi-number" data-target="2">0</div>
           <div class="kpi-title">Projects</div>
         </div>
         <div class="kpi-card">
@@ -267,7 +280,7 @@
 
     <div class="sep container"></div>
 
-    <!-- ABOUT (no portrait here to avoid duplication) -->
+    <!-- ABOUT (no portrait here) -->
     <section id="about" class="container">
       <p class="subkicker">ABOUT</p>
       <div class="about-grid">
@@ -296,7 +309,6 @@
             <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
-        <!-- Empty column kept for balance on desktop -->
         <div></div>
       </div>
     </section>
@@ -321,7 +333,6 @@
         <div class="contact-card">
           <div class="contact-top">
             <span class="icon-circle" aria-hidden="true">
-              <!-- map/marker icon -->
               <svg viewBox="0 0 24 24"><path d="M12 2C8.7 2 6 4.7 6 8c0 4.2 6 12 6 12s6-7.8 6-12c0-3.3-2.7-6-6-6zm0 8.5A2.5 2.5 0 1 1 12 5a2.5 2.5 0 0 1 0 5z"/></svg>
             </span>
             <div>
@@ -335,7 +346,6 @@
         <div class="contact-card">
           <div class="contact-top">
             <span class="icon-circle" aria-hidden="true">
-              <!-- phone icon -->
               <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1z"/></svg>
             </span>
             <div>
@@ -349,7 +359,6 @@
         <div class="contact-card">
           <div class="contact-top">
             <span class="icon-circle" aria-hidden="true">
-              <!-- paper plane -->
               <svg viewBox="0 0 24 24"><path d="M22 2 11 13l-1 5 5-1L22 2zM10 14l4 4"/></svg>
             </span>
             <div>
@@ -363,7 +372,6 @@
         <div class="contact-card">
           <div class="contact-top">
             <span class="icon-circle" aria-hidden="true">
-              <!-- download -->
               <svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3"/></svg>
             </span>
             <div>
@@ -401,10 +409,10 @@
   }
   </script>
 
-  <!-- Year -->
+  <!-- year -->
   <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 
-  <!-- Animated KPI counters -->
+  <!-- animated counters -->
   <script>
   (() => {
     const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
@@ -414,28 +422,24 @@
       if (n >= 1000) return (n/1000).toFixed(n%1000===0?0:1).replace(/\.0$/,'') + "k";
       return n.toLocaleString();
     };
-
     function animateCount(el, target, duration = 1500) {
-      const startTime = performance.now();
-      function frame(now) {
-        const p = Math.min((now - startTime) / duration, 1);
+      const start = performance.now();
+      function frame(now){
+        const p = Math.min((now - start)/duration, 1);
         const val = Math.floor(target * easeOutCubic(p));
         el.textContent = fmt(val);
         if (p < 1) requestAnimationFrame(frame);
       }
       requestAnimationFrame(frame);
     }
-
     const io = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const target = parseInt(el.dataset.target || '0', 10);
-        animateCount(el, target);
-        obs.unobserve(el); // quítalo si quieres re-animar cada vez que vuelva a entrar
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, to = parseInt(el.dataset.target||'0',10);
+        animateCount(el, to);
+        obs.unobserve(el);
       });
     }, { threshold: 0.6 });
-
     document.querySelectorAll('.kpi-number').forEach(el => io.observe(el));
   })();
   </script>
