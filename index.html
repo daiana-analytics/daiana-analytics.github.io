@@ -1,207 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daiana Beltrán — Data Analyst (SQL · Power BI)</title>
-  <meta name="description" content="Portafolio de Daiana Beltrán. Data Analyst (SQL · Power BI). Proyectos, resumen y contacto. Sitio estático con GitHub Pages." />
-  <meta name="author" content="Daiana Beltrán" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daiana Beltrán — Data Analyst</title>
+<meta name="description" content="Portafolio de Daiana Beltrán · Data Analyst (SQL · Power BI).">
+<meta property="og:title" content="Daiana Beltrán — Data Analyst">
+<meta property="og:description" content="SQL · Power BI · Proyectos">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://daiana-analytics.github.io">
+<meta property="og:image" content="https://github.com/daiana-analytics/daiana-analytics/raw/main/banner-linkedin.gif">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0b; --card:#131313; --text:#f5f5f5; --muted:#b8b8b8;
+  --accent:#f5b301; --line:#222; --pill:#1a1a1a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:Poppins,system-ui,Segoe UI,Roboto,Arial}
+a{color:inherit;text-decoration:none}
+.container{max-width:1100px;margin:0 auto;padding:0 22px}
 
-  <!-- Open Graph para compartir -->
-  <meta property="og:title" content="Daiana Beltrán — Data Analyst" />
-  <meta property="og:description" content="SQL · Power BI · Proyectos" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://daiana-analytics.github.io" />
-  <meta property="og:image" content="https://github.com/daiana-analytics/daiana-analytics/raw/main/banner-linkedin.gif" />
+/* NAV */
+.nav{position:sticky;top:0;z-index:20;background:rgba(0,0,0,.70);backdrop-filter:saturate(180%) blur(8px);
+     border-bottom:1px solid var(--line)}
+.nav .inner{display:flex;align-items:center;justify-content:space-between;height:56px}
+.brand{font-weight:800;letter-spacing:.4px}
+.menu{display:flex;gap:18px}
+.menu a{font-weight:600;color:#ddd}
+.menu a.active,.menu a:hover{color:var(--accent)}
 
-  <link rel="icon" href="/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+/* HERO */
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center;padding:64px 0 20px}
+@media (max-width:900px){.hero{grid-template-columns:1fr}}
+.badge{display:inline-flex;align-items:center;padding:10px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:800}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;border:1px solid #333;background:#141414;color:#fff;font-weight:700}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.kicker{color:var(--accent);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:12px}
+h1{font-size:46px;line-height:1.08;margin:8px 0}
+h2{font-size:28px;margin:0 0 12px}
+p.muted{color:var(--muted)}
+.heroimg{width:100%;max-height:360px;object-fit:cover;border-radius:18px;border:1px solid #222}
 
-  <style>
-    :root{--bg:#0b1020;--card:#11162a;--muted:#9aa4b2;--text:#e8eef6;--accent:#7c89ff;--accent2:#0EA5E9;--shadow:0 8px 30px rgba(0,0,0,.35);--radius:18px}
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif}
-    a{color:inherit;text-decoration:none}
-    .container{max-width:1080px;margin:0 auto;padding:24px}
-    header{position:sticky;top:0;backdrop-filter:saturate(180%) blur(10px);background:rgba(11,16,32,.6);border-bottom:1px solid rgba(124,137,255,.15);z-index:10}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.5px}
-    .brand .dot{width:10px;height:10px;border-radius:50%;background:var(--accent)}
-    .menu{display:flex;gap:16px;font-weight:600}
-    .menu a{opacity:.9}.menu a:hover{opacity:1;color:var(--accent)}
-    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center;padding:48px 0}
-    .card{background:linear-gradient(180deg,rgba(124,137,255,.12),rgba(124,137,255,0) 120%),var(--card);border:1px solid rgba(124,137,255,.18);border-radius:var(--radius);box-shadow:var(--shadow)}
-    .p16{padding:16px}.p24{padding:24px}.p32{padding:32px}
-    .muted{color:var(--muted)}
-    .title{font-size:38px;line-height:1.1;margin:0 0 8px}
-    .kicker{font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid rgba(124,137,255,.3);background:rgba(124,137,255,.12);font-weight:700}
-    .btn:hover{transform:translateY(-1px);filter:brightness(1.1)}
-    .btn.alt{background:rgba(14,165,233,.12);border-color:rgba(14,165,233,.4)}
-    .grid{display:grid;gap:18px}.grid.cols2{grid-template-columns:1fr 1fr}.grid.cols3{grid-template-columns:repeat(3,1fr)}
-    @media (max-width:860px){.hero{grid-template-columns:1fr}.grid.cols2,.grid.cols3{grid-template-columns:1fr}}
-    h2{margin:8px 0 10px;font-size:24px}
-    .tag{display:inline-block;padding:.35rem .6rem;border-radius:999px;background:rgba(124,137,255,.15);border:1px solid rgba(124,137,255,.35);font-size:12px;font-weight:700}
-    .list{display:grid;gap:8px}.list li{margin-left:1.2em}.list li::marker{color:var(--accent)}
-    footer{padding:36px 0;color:var(--muted);font-size:14px}
-    .pillbar{display:flex;gap:10px;flex-wrap:wrap;margin:8px 0}
-    .pill{border:1px solid rgba(232,238,246,.2);padding:6px 10px;border-radius:999px;font-size:12px}
-    .project{display:flex;flex-direction:column;gap:12px}
-    .project img{width:100%;height:180px;object-fit:cover;border-radius:12px;border:1px solid rgba(255,255,255,.08)}
-    .project h3{margin:.2rem 0}
-    .row{display:flex;gap:18px;flex-wrap:wrap}
-    .cta{display:flex;gap:12px;flex-wrap:wrap}
-    .sep{height:1px;background:rgba(124,137,255,.2);margin:24px 0;border-radius:999px}
-  </style>
+/* SECTIONS */
+.section{padding:32px 0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.sep{height:1px;background:var(--line);margin:24px 0;border-radius:999px}
+
+/* PROJECTS */
+.grid{display:grid;gap:18px}
+.grid.cols3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grid.cols3{grid-template-columns:1fr}}
+.project{display:flex;flex-direction:column;gap:10px;background:#111;border:1px solid #222;border-radius:16px;overflow:hidden}
+.project img{width:100%;height:180px;object-fit:cover;border-bottom:1px solid #222}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:999px;padding:6px 10px;font-size:12px;color:#d8d8d8}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* FOOTER */
+.footer{padding:26px 0;border-top:1px solid var(--line);color:#aaa;text-align:center}
+.pill{display:inline-block;padding:6px 10px;border-radius:999px;border:1px solid #2a2a2a;background:#101010;margin:0 6px;font-size:12px}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand"><span class="dot"></span> Daiana Beltrán</div>
-      <nav class="menu">
-        <a href="#sobre">Sobre mí</a>
-        <a href="#resumen">Resumen</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#contacto">Contacto</a>
-      </nav>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="container inner">
+    <div class="brand">Daiana Beltrán</div>
+    <nav class="menu">
+      <a href="#home" class="active">Home</a>
+      <a href="#projects">Projects</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="home" class="container hero">
+  <div>
+    <div class="kicker">Hello!</div>
+    <h1>Soy <span style="color:var(--accent)">Daiana</span><br/>Data Analyst (SQL · Power BI)</h1>
+    <p class="muted">SQL y Power BI para transformar datos en decisiones. Sitio simple con mis proyectos y contacto.</p>
+    <div class="row" style="margin-top:8px">
+      <a class="badge" href="#projects">Ver proyectos</a>
+      <a class="btn" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">Descargar CV</a>
     </div>
-  </header>
+    <div class="row" style="margin-top:12px">
+      <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="mailto:daianabeltran@gmail.com">Email</a>
+    </div>
+  </div>
+  <div>
+    <img class="heroimg" src="https://github.com/daiana-analytics/daiana-analytics/raw/main/banner-linkedin.gif" alt="Banner">
+  </div>
+</section>
 
-  <main class="container">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="card p32">
-        <div class="kicker">Portafolio</div>
-        <h1 class="title">Data Analyst — SQL · Power BI</h1>
-        <p class="muted">Trabajo con SQL y Power BI para construir modelos en estrella y tableros claros. Este sitio reúne mi resumen y proyectos.</p>
-        <div class="cta" style="margin-top:10px">
-          <a class="btn alt" href="#proyectos">Ver proyecto</a>
-          <a class="btn" href="#resumen">Ver resumen</a>
+<!-- PROJECTS (arriba) -->
+<section id="projects" class="container section">
+  <div class="kicker">Projects</div>
+  <h2>Proyectos Destacados</h2>
+
+  <div class="grid cols3">
+    <!-- OLIST -->
+    <article class="project">
+      <!-- Asegúrate de subir esta imagen a /assets/olist/summary_01.png -->
+      <img src="/assets/olist/summary_01.png" alt="Olist — Page 1 Summary">
+      <div style="padding:14px">
+        <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
+        <p class="muted">Vistas <code>bi.*</code>, controles de calidad (<code>quality.*</code>) y dashboard por etapas. Page 1 “Summary” publicada.</p>
+        <div class="tags">
+          <span class="tag">SQL Server</span><span class="tag">Power BI</span><span class="tag">Data Quality</span>
+        </div>
+        <div class="row" style="margin-top:10px">
+          <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">Ver repo</a>
+          <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql/tree/main/docs/screenshots" target="_blank" rel="noopener">Ver capturas</a>
         </div>
       </div>
-      <aside class="card p24">
-        <h2>Links rápidos</h2>
-        <div class="sep"></div>
-        <div class="cta">
-          <a class="btn alt" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a>
-          <a class="btn" href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">Resume (EN)</a>
-          <a class="btn" href="mailto:daianabeltran@gmail.com">Email</a>
-        </div>
-      </aside>
-    </section>
+    </article>
 
-    <!-- SOBRE MI -->
-    <section id="sobre" class="card p32">
-      <div class="kicker">Sobre mí</div>
-      <h2>Hola, soy Daiana</h2>
-      <p>Analista de Datos enfocada en SQL y Power BI. Me interesa construir pipelines claros, modelos en estrella y tableros fáciles de leer. Abierta a oportunidades remotas en LATAM y EE. UU.</p>
-    </section>
+    <!-- Próximo proyecto (puedes borrar o sustituir) -->
+    <article class="project">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop" alt="Próximo proyecto">
+      <div style="padding:14px">
+        <h3>Próximamente — Global Superstore (rebuild)</h3>
+        <p class="muted">Rehaciendo desde cero: modelo estrella + visuales básicos. Lo publico cuando Olist tenga 2–3 páginas.</p>
+        <div class="tags"><span class="tag">Power BI</span><span class="tag">Modelado Dimensional</span></div>
+      </div>
+    </article>
 
-    <!-- RESUMEN -->
-    <section id="resumen" class="card p32" style="margin-top:18px">
-      <div class="kicker">Resumen</div>
-      <h2>Skills & Tools</h2>
-      <div class="pillbar">
-        <span class="tag">SQL (MySQL/SQL Server)</span>
-        <span class="tag">Power BI</span>
-        <span class="tag">Modelado Dimensional</span>
-        <span class="tag">ETL básico</span>
-        <span class="tag">Git/GitHub</span>
-        <span class="tag">Excel</span>
+    <!-- Notas / snippets -->
+    <article class="project">
+      <img src="https://images.unsplash.com/photo-1556761175-129418cb2dfe?q=80&w=1200&auto=format&fit=crop" alt="Snippets SQL">
+      <div style="padding:14px">
+        <h3>Notas & Snippets</h3>
+        <p class="muted">Pequeños ejercicios y apuntes de SQL/DAX que voy subiendo.</p>
+        <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Ver en GitHub</a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="container section">
+  <div class="kicker">About Me</div>
+  <div class="card">
+    <h2>Sobre mí</h2>
+    <p>Analista de Datos enfocada en SQL y Power BI. Me interesan los modelos en estrella, controles de calidad y tableros claros. Abierta a oportunidades remotas en LATAM y EE. UU.</p>
+  </div>
+</section>
+
+<!-- RESUME -->
+<section id="resume" class="container section">
+  <div class="kicker">Resume</div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:18px">
+    <div class="card">
+      <h3>Educación</h3>
+      <p><strong>Data Science Career Program</strong> — EducaciónIT & Manhattan University (en curso; fin estimado Dic 2025).</p>
+      <p><strong>Data Analytics Bootcamp — Unicorn Academy (2025)</strong> · Credential ID: RAkqVb2n.</p>
+      <a class="btn" href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">Resume (EN)</a>
+      <a class="btn" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a>
+    </div>
+    <div class="card">
+      <h3>Stack</h3>
+      <div class="tags">
+        <span class="tag">SQL Server</span><span class="tag">MySQL</span><span class="tag">Power BI</span>
+        <span class="tag">DAX</span><span class="tag">Power Query</span><span class="tag">Git/GitHub</span>
+        <span class="tag">Excel/Sheets</span>
       </div>
       <div class="sep"></div>
-      <h2>Experiencia/Proyectos</h2>
-      <ul class="list">
-        <li><strong>Olist E-Commerce — SQL Server</strong>: pipeline RAW→CLEAN→QUALITY→BI, vistas BI-ready y controles de calidad. (Dashboard en progreso: Page 1 “Summary” publicada.)</li>
-      </ul>
-    </section>
+      <p class="muted">Publico avances por commits y capturas. Para el detalle técnico, ver README del repo Olist.</p>
+      <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">README Técnico</a>
+    </div>
+  </div>
+</section>
 
-    <!-- PROYECTO (solo Olist) -->
-    <section id="proyectos" class="p16" style="margin-top:18px">
-      <div class="kicker">Proyectos</div>
-      <h2>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h2>
-      <div class="grid cols2">
-        <article class="card p16 project">
-          <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1200&auto=format&fit=crop" alt="Olist" />
-          <div>
-            <h3>Resumen</h3>
-            <p class="muted">Vistas <code>bi.*</code>, validaciones de llaves/fechas y notas técnicas. Incluye página “Summary” del dashboard.</p>
-          </div>
-          <div class="cta">
-            <a class="btn alt" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">Ver repo</a>
-            <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql/tree/main/docs/screenshots" target="_blank" rel="noopener">Ver capturas</a>
-          </div>
-        </article>
+<!-- CONTACT -->
+<section id="contact" class="container section">
+  <div class="kicker">Contact</div>
+  <div class="card">
+    <h2>Hablemos</h2>
+    <p>¿Colaboramos? Escribime a <a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a> o usá el formulario.</p>
+    <form action="https://formspree.io/f/TU_FORM_ID" method="POST" style="display:grid;gap:12px;max-width:560px">
+      <input name="name" placeholder="Nombre" required style="padding:12px;border-radius:10px;border:1px solid #2a2a2a;background:#0f0f0f;color:#fff">
+      <input type="email" name="email" placeholder="Email" required style="padding:12px;border-radius:10px;border:1px solid #2a2a2a;background:#0f0f0f;color:#fff">
+      <textarea name="message" rows="4" placeholder="Mensaje" required style="padding:12px;border-radius:10px;border:1px solid #2a2a2a;background:#0f0f0f;color:#fff"></textarea>
+      <button type="submit" class="badge" style="justify-content:center">Enviar</button>
+    </form>
+  </div>
+</section>
 
-        <article class="card p16">
-          <h3>Roadmap (dashboard)</h3>
-          <ul class="list">
-            <li>[✅] Page 1 — Summary (KPIs + trends)</li>
-            <li>[⬜] Page 2 — Quality & Data Health</li>
-            <li>[⬜] Page 3 — Delivery / Lead Time</li>
-          </ul>
-          <p class="muted">Voy publicando por etapas para mostrar progreso real (commits y capturas).</p>
-        </article>
-      </div>
-    </section>
+<!-- FOOTER -->
+<footer class="footer">
+  <div>© <span id="y"></span> Daiana Beltrán</div>
+  <div style="margin-top:8px">
+    <a class="pill" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
+    <a class="pill" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+</footer>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="card p32" style="margin-top:18px">
-      <div class="kicker">Contacto</div>
-      <h2>Escribime</h2>
-      <p class="muted">Formulario con Formspree. Cuando tengas tu ID, reemplazá <code>TU_FORM_ID</code>.</p>
-      <form class="grid cols2" action="https://formspree.io/f/TU_FORM_ID" method="POST">
-        <div class="p16" style="padding-left:0">
-          <label>Nombre<br>
-            <input required name="name" placeholder="Tu nombre" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(124,137,255,.35);background:#0f1530;color:var(--text)">
-          </label>
-        </div>
-        <div class="p16" style="padding-right:0">
-          <label>Email<br>
-            <input required type="email" name="email" placeholder="tunombre@mail.com" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(124,137,255,.35);background:#0f1530;color:var(--text)">
-          </label>
-        </div>
-        <div class="p16" style="grid-column:1/-1;padding-left:0;padding-right:0">
-          <label>Mensaje<br>
-            <textarea required name="message" rows="5" placeholder="Contame en qué puedo ayudarte" style="width:100%;padding:12px;border-radius:12px;border:1px solid rgba(124,137,255,.35);background:#0f1530;color:var(--text)"></textarea>
-          </label>
-        </div>
-        <div class="p16" style="grid-column:1/-1;padding-left:0;padding-right:0">
-          <button class="btn alt" type="submit">Enviar</button>
-          <span class="muted" style="margin-left:8px">o escribime a <a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></span>
-        </div>
-      </form>
-    </section>
-
-    <footer class="container">
-      <div class="sep"></div>
-      <div class="row" style="align-items:center;justify-content:space-between">
-        <div>© <span id="y"></span> Daiana Beltrán</div>
-        <div class="pillbar">
-          <a class="pill" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
-          <a class="pill" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="pill" href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV</a>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Daiana Beltrán",
-    "url": "https://daiana-analytics.github.io",
-    "jobTitle": "Data Analyst",
-    "sameAs": [
-      "https://github.com/daiana-analytics",
-      "https://www.linkedin.com/in/daiana-beltran"
-    ]
-  }
-  </script>
-  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+<script>document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
+
