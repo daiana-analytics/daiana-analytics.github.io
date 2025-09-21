@@ -12,7 +12,7 @@
   <style>
     :root{
       --bg:#0b0b0b; --panel:#1a1a1a; --soft:#222; --text:#f2f2f2; --muted:#bdbdbd;
-      --acc:#f2b11c; --line:rgba(255,255,255,.08); --brand:#111; --topbar:#1d1a9e;
+      --acc:#f2b11c; --line:rgba(255,255,255,.08); --topbar:#1d1a9e;
       --r:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
       --h1: clamp(48px, 8.2vw, 96px);
       --h2: clamp(28px, 3.2vw, 48px);
@@ -26,7 +26,7 @@
     p{line-height:1.7}
     .container{max-width:1200px;margin:0 auto;padding:0 28px}
 
-    /* TOP BORDER like reference */
+    /* TOP BORDER */
     body:before{content:"";position:fixed;inset:0 0 auto 0;height:6px;background:var(--topbar);z-index:9999}
 
     /* NAV */
@@ -40,7 +40,7 @@
       content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--acc);border-radius:3px
     }
 
-    /* HERO (two columns) */
+    /* HERO */
     .hero{padding:110px 0 60px}
     .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:center}
     @media (max-width:980px){.hero-grid{grid-template-columns:1fr}}
@@ -55,7 +55,7 @@
     .portrait-wrap{display:flex;justify-content:center}
     .portrait{width:min(520px,92%);height:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.55))}
 
-    /* Section header with ghost word */
+    /* SECTIONS + ghost title */
     section{padding:64px 0}
     .ghost{position:relative;text-align:center;margin-bottom:28px}
     .ghost h2{font-size:var(--h2);margin:0 0 8px;font-weight:800}
@@ -67,7 +67,7 @@
     }
     .sep{height:2px;background:linear-gradient(90deg, transparent, #87720a 40%, #87720a 60%, transparent);border-radius:999px;margin:24px auto;max-width:980px;opacity:.8}
 
-    /* ABOUT split layout + skills bars */
+    /* ABOUT */
     .about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:start}
     @media (max-width:980px){.about-grid{grid-template-columns:1fr}}
     .card{background:#121212;border:1px solid var(--line);border-radius:16px;padding:22px}
@@ -79,14 +79,14 @@
     .bar{height:12px;border-radius:999px;background:#1f1f1f;border:1px solid #2a2a2a;overflow:hidden}
     .bar i{display:block;height:100%;background:linear-gradient(90deg,#f6c23e,#f2b11c)}
 
-    /* RESUME cards (Education only, estilo del ejemplo) */
+    /* RESUME */
     .resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
     @media (max-width:980px){.resume-grid{grid-template-columns:1fr}}
     .resume-card{background:#171717;border:1px solid var(--line);border-radius:16px;padding:24px}
     .year{font-weight:900;color:#f2e9c3;font-size:20px}
     .school{color:#aaa;text-transform:uppercase;letter-spacing:.16em;margin-top:6px;font-size:12px}
 
-    /* PROJECTS grid */
+    /* PROJECTS */
     .projects{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     @media (max-width:1080px){.projects{grid-template-columns:1fr 1fr}}
     @media (max-width:720px){.projects{grid-template-columns:1fr}}
@@ -101,7 +101,7 @@
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:#151b2b;font-weight:800;font-size:13.5px}
     .btn.primary{background:linear-gradient(180deg,#f6c23e,#f2b11c);color:#111;border-color:rgba(0,0,0,.1)}
 
-    /* COUNTERS STRIP (like "achievements / projects / connections / coffee") */
+    /* STRIP KPIs */
     .strip{position:relative;background:url('https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;border-radius:18px;overflow:hidden}
     .darken{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.65),rgba(0,0,0,.65))}
     .kpis{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:28px}
@@ -110,7 +110,7 @@
     .k .n{color:var(--acc);font-weight:900;font-size:clamp(28px,4.8vw,40px)}
     .k .l{color:#d6d6d6;font-weight:600}
 
-    /* CONTACT icons row */
+    /* CONTACT */
     .contact-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
     @media (max-width:980px){.contact-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.contact-grid{grid-template-columns:1fr}}
@@ -129,10 +129,10 @@
       <div class="brand">Daiana Beltrán</div>
       <nav class="menu">
         <a class="active" href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+        <a href="#resume">Resume</a>
       </nav>
     </div>
   </header>
@@ -152,7 +152,6 @@
         <a class="cta" href="#projects">MY WORKS</a>
       </div>
       <div class="portrait-wrap">
-        <!-- tu foto exacta -->
         <img class="portrait" src="/assets/brand/portrait.png" alt="Daiana Beltrán portrait"/>
       </div>
     </div>
@@ -212,13 +211,14 @@
         </article>
       </div>
 
+      <!-- KPIs (animados) -->
       <div class="strip" style="margin-top:28px">
         <div class="darken"></div>
         <div class="kpis">
-          <div class="k"><div class="n" data-target="10">10</div><div class="l">Achievements</div></div>
-          <div class="k"><div class="n" data-target="2">2</div><div class="l">Projects</div></div>
-          <div class="k"><div class="n" data-target="500">500</div><div class="l">Connections</div></div>
-          <div class="k"><div class="n" data-target="1000">1,000</div><div class="l">Cups of coffee</div></div>
+          <div class="k"><div class="n" data-target="10">0</div><div class="l">Achievements</div></div>
+          <div class="k"><div class="n" data-target="3">0</div><div class="l">Projects</div></div>
+          <div class="k"><div class="n" data-target="500" data-suffix="+">0</div><div class="l">Connections</div></div>
+          <div class="k"><div class="n" data-target="1000" data-short="true">0</div><div class="l">Cups of coffee</div></div>
         </div>
         <div class="container" style="position:relative;text-align:center;padding:0 0 32px">
           <h3 style="font-size:clamp(28px,4vw,42px);margin:10px 0 4px;font-weight:900">More projects on <span style="color:var(--acc)">GitHub</span></h3>
@@ -229,7 +229,38 @@
     </div>
   </section>
 
-  
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="ghost" data-ghost="Contact">
+        <h2>Contact Me</h2>
+        <p>Below are the details to reach out to me.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="c">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v12h18V7l-9-5Z" fill="none" stroke="currentColor"/></svg></span>
+          <div><div style="font-weight:800">ADDRESS</div><div class="muted">Argentina (UTC-3)</div></div>
+        </div>
+        <div class="c">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1Z" fill="none" stroke="currentColor"/></svg></span>
+          <div><div style="font-weight:800">CONTACT NUMBER</div><div class="muted">+54 299 603 2267</div></div>
+        </div>
+        <div class="c">
+          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor"/></svg></span>
+          <div><div style="font-weight:800">EMAIL ADDRESS</div><div><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></div></div>
+        </div>
+        <div class="c">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3" fill="none" stroke="currentColor"/></svg></span>
+          <div><div style="font-weight:800">DOWNLOAD RESUME</div>
+            <div><a href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">Resume (EN)</a> ·
+                <a href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ABOUT -->
   <section id="about">
     <div class="container">
@@ -292,7 +323,7 @@
     </div>
   </section>
 
-  <!-- RESUME (Education) -->
+  <!-- RESUME -->
   <section id="resume">
     <div class="container">
       <div class="ghost" data-ghost="Resume">
@@ -322,38 +353,6 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <div class="ghost" data-ghost="Contact">
-        <h2>Contact Me</h2>
-        <p>Below are the details to reach out to me.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="c">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 3 7v12h18V7l-9-5Z" fill="none" stroke="currentColor"/></svg></span>
-          <div><div style="font-weight:800">ADDRESS</div><div class="muted">Argentina (UTC-3)</div></div>
-        </div>
-        <div class="c">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.3 15.3 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.6 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 8a1 1 0 0 1 1-1h3.4a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .6 3.6 1 1 0 0 1-.25 1Z" fill="none" stroke="currentColor"/></svg></span>
-          <div><div style="font-weight:800">CONTACT NUMBER</div><div class="muted">+54 299 603 2267</div></div>
-        </div>
-        <div class="c">
-          <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor"/></svg></span>
-          <div><div style="font-weight:800">EMAIL ADDRESS</div><div><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></div></div>
-        </div>
-        <div class="c">
-          <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3" fill="none" stroke="currentColor"/></svg></span>
-          <div><div style="font-weight:800">DOWNLOAD RESUME</div>
-            <div><a href="https://docs.google.com/document/d/1e_NKsKQgyqh5sVnSx79eFWA7HHKwgQQ9-2BKQM1VISA/export?format=pdf" target="_blank" rel="noopener">Resume (EN)</a> ·
-                <a href="https://docs.google.com/document/d/130RopW1m99d8Gq91jpqG7du9axSayNakaK6JqLqgpXU/export?format=pdf" target="_blank" rel="noopener">CV (ES)</a></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <footer>
     © <span id="y"></span> Daiana Beltrán · Built with GitHub Pages
   </footer>
@@ -361,7 +360,7 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Smooth scroll + active highlight
+    // Smooth scroll + active highlight (orden del menú actualizado)
     const links = document.querySelectorAll('.menu a[href^="#"]');
     const map = {}; document.querySelectorAll('.menu a').forEach(a=>map[a.getAttribute('href').slice(1)] = a);
     links.forEach(a=>{
@@ -371,7 +370,7 @@
         if(!el) return; window.scrollTo({top:el.getBoundingClientRect().top+scrollY-80,behavior:'smooth'});
       });
     });
-    const sections=['home','about','resume','projects','contact'].map(i=>document.getElementById(i));
+    const sections=['home','projects','contact','about','resume'].map(i=>document.getElementById(i));
     const io=new IntersectionObserver(es=>{
       es.forEach(e=>{
         if(e.isIntersecting){
@@ -382,6 +381,29 @@
     },{rootMargin:'-45% 0px -50% 0px'});
     sections.forEach(s=>s&&io.observe(s));
   </script>
+
+  <!-- KPI counters on view -->
+  <script>
+  (function(){
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const fmt  = (n, short, suf) => short && n>=1000 ? Math.round(n/1000)+'k'+(suf||'')
+                                                     : Math.round(n).toLocaleString()+(suf||'');
+    const els = document.querySelectorAll('.n[data-target]');
+    const animate = el => {
+      const target = +el.dataset.target, short = el.dataset.short === 'true', suf = el.dataset.suffix || '';
+      const start = performance.now(), dur = 1200;
+      function tick(now){
+        const p = Math.min((now - start)/dur, 1);
+        el.textContent = fmt(ease(p) * target, short, suf);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    };
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ animate(e.target); io.unobserve(e.target); } });
+    }, { threshold: 0.4 });
+    els.forEach(el=>io.observe(el));
+  })();
+  </script>
 </body>
 </html>
-
