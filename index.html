@@ -16,7 +16,7 @@
   <link rel="icon" href="/favicon.ico" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <!-- Icons -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
 
   <style>
     :root{
@@ -90,7 +90,25 @@
     .tag{font-size:12px;padding:.32rem .58rem;border-radius:999px;border:1px solid var(--line);background:#0f1322}
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 
-    /* ICON CARDS (CONTACT) */
+    /* ABOUT badges */
+    .tagbar{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+
+    /* TRAINING (cards estilo internship/education) */
+    .edu-grid{display:grid;gap:22px;grid-template-columns:1fr 1fr}
+    @media (max-width:860px){.edu-grid{grid-template-columns:1fr}}
+    .edu-card{
+      background:var(--panel);
+      border:1px solid var(--line);
+      border-radius:16px;
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    .org{margin:.25rem 0 .75rem;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#cbd5e1}
+    .edu-card ul{margin:.5rem 0 0 1.1rem}
+    .edu-card li{margin:.4rem 0}
+
+    /* CONTACT icon cards (yellow icons) */
     .icon-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:12px}
     @media (max-width:980px){.icon-grid{grid-template-columns:1fr 1fr}}
     @media (max-width:560px){.icon-grid{grid-template-columns:1fr}}
@@ -142,7 +160,7 @@
       </div>
 
       <div class="hero-portrait">
-        <img class="portrait" src="/assets/brand/portrait.png" alt="Daiana Beltrán portrait">
+        <img class="portrait" src="/assets/brand/portrait.png" alt="Daiana Beltrán portrait" />
       </div>
     </div>
   </section>
@@ -158,7 +176,7 @@
         <!-- OLIST -->
         <article class="card project">
           <div class="thumb">
-            <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Olist — Dashboard Summary">
+            <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Olist — Dashboard Summary" />
           </div>
           <div class="p16">
             <h3>Olist — SQL Server (RAW→CLEAN→QUALITY→BI)</h3>
@@ -173,10 +191,10 @@
           </div>
         </article>
 
-        <!-- GLOBAL SUPERSTORE (placeholder) -->
+        <!-- GLOBAL SUPERSTORE -->
         <article class="card project">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Global Superstore rebuild">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1600&auto=format&fit=crop" alt="Global Superstore rebuild" />
           </div>
           <div class="p16">
             <h3>Global Superstore — Financial Analytics (rebuild)</h3>
@@ -191,7 +209,7 @@
         <!-- NOTES -->
         <article class="card project">
           <div class="thumb">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop" alt="Notes and snippets">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop" alt="Notes and snippets" />
           </div>
           <div class="p16">
             <h3>Notes &amp; Snippets</h3>
@@ -207,7 +225,7 @@
 
     <div class="sep container"></div>
 
-    <!-- ABOUT (sin foto) -->
+    <!-- ABOUT (no portrait here) -->
     <section id="about" class="container">
       <p class="subkicker">ABOUT</p>
       <h2>Data Analyst focused on SQL &amp; Power BI</h2>
@@ -221,18 +239,47 @@
       <div class="tagbar" style="margin:12px 0">
         <span class="tag">T-SQL / MySQL</span><span class="tag">DAX · Power Query</span>
         <span class="tag">Dimensional Model</span><span class="tag">Git/GitHub</span>
-        <span class="tag">Excel / Sheets</span><span class="tag">MongoDB (learning)</span>
+        <span class="tag">Excel/Sheets</span><span class="tag">MongoDB (learning)</span>
       </div>
 
-      <h3 style="margin-top:12px">Training</h3>
-      <ul class="muted" style="margin:8px 0 0 18px; line-height:1.6">
-        <li><strong>Data Science Career Program (International)</strong> — EducaciónIT &amp; Manhattan University (in progress, Dec 2025).
-          ~275h: SQL, Python (pandas), Power BI (PL-300), Azure fundamentals, basic ML, Data Engineering.</li>
-        <li><strong>Bootcamp Data Analytics — Unicorn Academy (2025)</strong>. Credential ID: RAkqVb2n.</li>
-        <li>B.A. in Psychology — Universidad de Flores (2017–2024): applied statistics and quantitative/qualitative methods.</li>
-      </ul>
+      <h3 style="margin-top:14px">Training</h3>
 
-      <div class="actions" style="margin-top:14px">
+      <!-- training cards -->
+      <div class="edu-grid" style="margin-top:8px">
+        <article class="edu-card">
+          <div class="eyebrow">2025 — In progress</div>
+          <div class="org">EDUCACIÓNIT · MANHATTAN UNIVERSITY</div>
+          <p class="muted">Data Science Career Program (International) — ~275h.</p>
+          <ul class="muted">
+            <li>SQL, Python (pandas), Power BI (PL-300 track).</li>
+            <li>Azure fundamentals, basic ML, Data Engineering.</li>
+          </ul>
+        </article>
+
+        <article class="edu-card">
+          <div class="eyebrow">2025</div>
+          <div class="org">UNICORN ACADEMY</div>
+          <p class="muted">Bootcamp Data Analytics. Credential ID: <strong>RAkqVb2n</strong>.</p>
+          <ul class="muted">
+            <li>Dimensional modeling, DAX & Power Query.</li>
+            <li>BI best practices and storytelling.</li>
+          </ul>
+        </article>
+
+        <article class="edu-card">
+          <div class="eyebrow">2017 — 2024</div>
+          <div class="org">UNIVERSIDAD DE FLORES</div>
+          <p class="muted">B.A. in Psychology.</p>
+          <ul class="muted">
+            <li>Applied statistics and quantitative/qualitative methods.</li>
+          </ul>
+        </article>
+
+        <!-- filler for grid balance on desktop -->
+        <div class="edu-card" style="display:none"></div>
+      </div>
+
+      <div class="actions" style="margin-top:16px">
         <a class="btn primary" href="mailto:daianabeltran@gmail.com">Email me</a>
         <a class="btn" href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">LinkedIn</a>
         <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
@@ -241,35 +288,31 @@
 
     <div class="sep container"></div>
 
-    <!-- CONTACT con íconos -->
+    <!-- CONTACT (iconos amarillos) -->
     <section id="contact" class="container">
       <p class="subkicker">CONTACT</p>
       <h2>Let’s talk</h2>
       <p class="muted">Open to remote roles (LATAM / U.S.). Quick replies via Email or LinkedIn.</p>
 
       <div class="icon-grid">
-        <!-- Address -->
         <div class="icon-card">
           <div class="icon-badge"><i class="fa-solid fa-location-arrow"></i></div>
           <div class="label">ADDRESS</div>
           <h3>Remote · LATAM / U.S.</h3>
         </div>
 
-        <!-- Contact number -->
         <div class="icon-card">
           <div class="icon-badge"><i class="fa-solid fa-phone"></i></div>
           <div class="label">CONTACT NUMBER</div>
           <h3>On request</h3>
         </div>
 
-        <!-- Email -->
         <div class="icon-card">
           <div class="icon-badge"><i class="fa-solid fa-paper-plane"></i></div>
           <div class="label">EMAIL ADDRESS</div>
           <h3><a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a></h3>
         </div>
 
-        <!-- Download resume -->
         <div class="icon-card">
           <div class="icon-badge"><i class="fa-solid fa-file-arrow-down"></i></div>
           <div class="label">DOWNLOAD RESUME</div>
