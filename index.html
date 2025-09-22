@@ -47,16 +47,34 @@
     .hello{letter-spacing:.35em;color:var(--acc);font-weight:800;margin:0 0 14px}
     .h1{font-size:var(--h1);line-height:1.05;margin:0 0 8px;font-weight:900}
     .h1 .accent{color:var(--acc)}
-    .role1{font-weight:800;font-size:clamp(22px,2.2vw,28px);margin:12px 0 12px;display:flex;align-items:center;gap:.4rem}
     .role2{font-size:clamp(22px,2.2vw,30px);opacity:.94;margin:0 0 16px}
     .lede{max-width:62ch;color:var(--muted);font-size:var(--lead);margin:0 0 22px}
     .cta{display:inline-flex;align-items:center;gap:10px;background:var(--acc);color:#111;border:none;border-radius:999px;padding:14px 22px;font-weight:800;box-shadow:var(--shadow)}
     .cta:hover{filter:brightness(1.05);transform:translateY(-1px)}
-    .portrait-wrap{display:flex;justify-content:center}
+    .portrait-wrap{display:flex;justify-content:center;align-self:center;min-height:420px}
     .portrait{width:min(520px,92%);height:auto;filter:drop-shadow(0 24px 48px rgba(0,0,0,.55))}
 
-    /* Typewriter caret */
-    #tw{border-right:3px solid var(--acc);padding-right:6px;white-space:nowrap;overflow:hidden}
+    /* Typewriter fijo (no mueve la foto) */
+    .typewrap{
+      display:block;
+      white-space:nowrap;
+      overflow:hidden;
+      height:1.6em;
+      line-height:1.6em;
+      font-size:clamp(22px,2.2vw,28px);
+      font-weight:800;
+      margin:12px 0 12px;
+    }
+    .caret{
+      display:inline-block;
+      width:2px;
+      height:1em;
+      margin-left:6px;
+      background:var(--acc);
+      vertical-align:-0.1em;
+      animation:blink 1s steps(1,end) infinite;
+    }
+    @keyframes blink{50%{opacity:0}}
 
     /* SECTIONS + ghost title */
     section{padding:64px 0}
@@ -150,7 +168,12 @@
       <div>
         <div class="hello">HELLO!</div>
         <h1 class="h1">I'm <span class="accent">Daiana</span><br/>Beltrán</h1>
-        <div class="role1"><span id="tw"></span></div>
+
+        <!-- Typewriter estable -->
+        <div class="typewrap">
+          <span id="tw"></span><i class="caret" aria-hidden="true"></i>
+        </div>
+
         <div class="role2">A Data Analyst</div>
         <p class="lede">
           Junior Data Analyst — SQL (T-SQL/MySQL) & Power BI (DAX/Power Query).
@@ -453,6 +476,7 @@
   (function(){
     const words = ["Analytics", "SQL · Power BI", "Data Modeling"];
     const el = document.getElementById("tw");
+    if(!el) return;
     let wi = 0, ci = 0, dir = 1, t = "";
 
     function tick(){
