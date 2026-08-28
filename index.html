@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Daiana Beltrán | Analista de Datos Junior</title>
-  <meta name="description" content="Portfolio de Daiana Beltrán, Analista de Datos Junior. Proyectos en SQL Server, MySQL, Power BI, DAX básico, Python y dashboards orientados a negocio." />
+  <title>Daiana Beltrán | Data Analyst</title>
+  <meta name="description" content="Daiana Beltrán's portfolio, Data Analyst. Business-focused projects using SQL Server, MySQL, Power BI, DAX, and Python." />
   <meta name="author" content="Daiana Beltrán" />
-  <meta property="og:title" content="Daiana Beltrán | Analista de Datos Junior" />
-  <meta property="og:description" content="Portfolio de análisis de datos: SQL, Power BI, limpieza de datos, modelado, KPIs y dashboards de negocio." />
+  <meta property="og:title" content="Daiana Beltrán | Data Analyst" />
+  <meta property="og:description" content="Data analysis portfolio: SQL, Power BI, data cleaning, modeling, KPIs and business dashboards." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="assets/brand/portrait2.png" />
   <link rel="icon" href="favicon.ico" />
@@ -176,6 +176,7 @@
     .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:11px;border:1px solid var(--line);background:rgba(255,255,255,.03);font-weight:800;font-size:12.5px}
     .btn.primary{background:linear-gradient(135deg,var(--acc-2),var(--acc));color:#12100a;border-color:transparent}
+    .badge-early{display:inline-block;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#12100a;background:var(--acc-2);border-radius:999px;padding:4px 10px;margin-bottom:10px}
 
     /* KPI STRIP */
     .strip{position:relative;background:linear-gradient(135deg,#131318,#08080a);border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:30px}
@@ -254,107 +255,109 @@
 <body>
   <header id="siteHeader">
     <div class="container nav">
-      <a class="brand" href="#inicio">Daiana Beltrán</a>
-      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <a class="brand" href="#home">Daiana Beltrán</a>
+      <button class="burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
-      <nav class="menu" aria-label="Navegación principal" id="siteMenu">
-        <a class="active" href="#inicio">Inicio</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#sobre-mi">Sobre mí</a>
-        <a href="#formacion">Formación</a>
-        <a href="#contacto">Contacto</a>
-        <a class="nav-cv" href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">CV</a>
+      <nav class="menu" aria-label="Main navigation" id="siteMenu">
+        <a class="active" href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#background">Background</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cv" href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">Resume</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section id="inicio" class="hero">
+    <section id="home" class="hero">
       <div class="container hero-grid">
         <div class="reveal in">
-          <div class="hello">De la escucha al dato</div>
-          <h1 class="h1">Soy <span class="accent">Daiana</span><br />Beltrán</h1>
+          <div class="hello">From listening to people, to listening to data</div>
+          <h1 class="h1">I'm <span class="accent">Daiana</span><br />Beltrán</h1>
           <div class="role-line"><span class="dot"></span><span class="role"><span id="tw"></span><span class="accent-deep" aria-hidden="true">|</span></span></div>
           <p class="lede">
-            Analista de Datos Junior enfocada en SQL y Power BI. Construyo proyectos reproducibles de análisis de negocio: limpieza de datos, modelado, KPIs, dashboards y controles de calidad para apoyar la toma de decisiones.
+            I work as a translator between data and business: before analyzing, I ask what problem needs solving, what decision the analysis needs to support, and what a good answer looks like. I build reproducible business analytics projects — data cleaning, modeling, KPIs, dashboards, and quality checks that support real decisions.
           </p>
           <div class="hero-actions">
-            <a class="btn-main" href="#proyectos">Ver proyectos</a>
+            <a class="btn-main" href="#projects">View projects</a>
             <a class="btn-secondary" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn-secondary" href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">Descargar CV</a>
+            <a class="btn-secondary" href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">Download Resume</a>
           </div>
-          <div class="proof" aria-label="Stack principal">
+          <div class="proof" aria-label="Core stack">
             <span class="pill">SQL Server</span>
             <span class="pill">MySQL</span>
             <span class="pill">Power BI</span>
-            <span class="pill">Python básico</span>
+            <span class="pill">Python</span>
             <span class="pill">GitHub</span>
           </div>
         </div>
         <div class="portrait-wrap reveal in">
           <div class="portrait-ring"></div>
           <div class="portrait-plate"></div>
-          <img class="portrait" src="assets/brand/portrait2.png" alt="Retrato profesional de Daiana Beltrán" />
+          <img class="portrait" src="assets/brand/portrait2.png" alt="Professional portrait of Daiana Beltrán" />
         </div>
       </div>
     </section>
 
-    <section id="proyectos">
+    <section id="projects">
       <div class="container">
         <div class="head reveal">
           <div class="eyebrow" style="justify-content:center">Portfolio</div>
-          <h2>Proyectos de portfolio</h2>
-          <p>Casos prácticos orientados a negocio, consistencia de métricas, modelado de datos y visualización en Power BI.</p>
+          <h2>Portfolio projects</h2>
+          <p>Business-focused case studies: metric consistency, data modeling, and Power BI visualization — each one starting from a real business question and closing with a clear recommendation.</p>
         </div>
 
         <div class="projects">
           <article class="proj reveal">
             <div class="thumb">
-              <img src="https://raw.githubusercontent.com/daiana-analytics/global_superstore_finance/main/dashboards/powerbi/assets/powerbi-dashboard-demo.gif" alt="Dashboard financiero de Global Superstore en Power BI" />
+              <img src="https://raw.githubusercontent.com/daiana-analytics/global_superstore_finance/main/dashboards/powerbi/assets/powerbi-dashboard-demo.gif" alt="Global Superstore financial dashboard in Power BI" />
             </div>
             <div class="p22">
-              <h3>Global Superstore — Dashboard financiero</h3>
-              <p>Modelo estrella y KPIs para analizar ventas, profit, margen bruto, descuentos, lead time y entregas tardías. Dashboard ejecutivo con medidas DAX y visualizaciones interactivas.</p>
+              <span class="badge-early">Early project</span>
+              <h3>Global Superstore — Financial Dashboard</h3>
+              <p>Star schema and KPIs to analyze sales, profit, gross margin, discounts, lead time, and late deliveries. Executive dashboard with DAX measures and interactive visualizations.</p>
               <div class="tags">
-                <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Modelo estrella</span>
+                <span class="tag">SQL</span><span class="tag">Power BI</span><span class="tag">DAX</span><span class="tag">Star Schema</span>
               </div>
               <div class="actions">
-                <a class="btn primary" href="https://github.com/daiana-analytics/global_superstore_finance" target="_blank" rel="noopener">Ver repo</a>
-                <a class="btn" href="https://github.com/daiana-analytics/global_superstore_finance#readme" target="_blank" rel="noopener">Leer caso</a>
+                <a class="btn primary" href="https://github.com/daiana-analytics/global_superstore_finance" target="_blank" rel="noopener">View repo</a>
+                <a class="btn" href="https://github.com/daiana-analytics/global_superstore_finance#readme" target="_blank" rel="noopener">Read case study</a>
               </div>
             </div>
           </article>
 
           <article class="proj reveal">
             <div class="thumb">
-              <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Dashboard resumen de Olist E-commerce" />
+              <img src="https://raw.githubusercontent.com/daiana-analytics/olist-ecommerce-sql/main/docs/screenshots/Pag%201%20Summary.png" alt="Olist E-commerce summary dashboard" />
             </div>
             <div class="p22">
+              <span class="badge-early">Early project</span>
               <h3>Olist E-commerce Analytics — SQL Server</h3>
-              <p>Limpieza, organización y análisis de datos de e-commerce mediante consultas SQL, vistas analíticas y métricas de negocio para ventas, pagos, entregas, clientes y pedidos tardíos.</p>
+              <p>Cleaning, organizing, and analyzing e-commerce data through SQL queries, analytical views, and business metrics for sales, payments, deliveries, customers, and late orders.</p>
               <div class="tags">
                 <span class="tag">SQL Server</span><span class="tag">T-SQL</span><span class="tag">Data Quality</span><span class="tag">BI Views</span>
               </div>
               <div class="actions">
-                <a class="btn primary" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">Ver repo</a>
-                <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql#readme" target="_blank" rel="noopener">Leer caso</a>
+                <a class="btn primary" href="https://github.com/daiana-analytics/olist-ecommerce-sql" target="_blank" rel="noopener">View repo</a>
+                <a class="btn" href="https://github.com/daiana-analytics/olist-ecommerce-sql#readme" target="_blank" rel="noopener">Read case study</a>
               </div>
             </div>
           </article>
 
           <article class="proj reveal">
             <div class="thumb">
-              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop" alt="Notebook y análisis de datos" />
+              <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600&auto=format&fit=crop" alt="Notebook and data analysis" />
             </div>
             <div class="p22">
-              <h3>Laboratorio SQL + Python</h3>
-              <p>Prácticas y notas breves para reforzar consultas, limpieza de datos, análisis exploratorio y documentación técnica en GitHub.</p>
+              <h3>SQL + Python Lab</h3>
+              <p>Ongoing practice and short notes to sharpen querying, data cleaning, exploratory analysis, and technical documentation on GitHub.</p>
               <div class="tags">
                 <span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">GitHub</span>
               </div>
               <div class="actions">
-                <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Ver GitHub</a>
+                <a class="btn" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">View GitHub</a>
               </div>
             </div>
           </article>
@@ -362,26 +365,26 @@
 
         <div class="strip reveal">
           <div class="kpis">
-            <div class="k"><div class="n" data-target="2">0</div><div class="l">Proyectos principales</div></div>
-            <div class="k"><div class="n" data-target="5">0</div><div class="l">Herramientas aplicadas</div></div>
-            <div class="k"><div class="n" data-target="4">0</div><div class="l">Áreas de análisis</div></div>
-            <div class="k"><div class="n" data-target="1">0</div><div class="l">Portfolio reproducible</div></div>
+            <div class="k"><div class="n" data-target="2">0</div><div class="l">Core projects</div></div>
+            <div class="k"><div class="n" data-target="5">0</div><div class="l">Tools applied</div></div>
+            <div class="k"><div class="n" data-target="4">0</div><div class="l">Analysis areas</div></div>
+            <div class="k"><div class="n" data-target="1">0</div><div class="l">Reproducible portfolio</div></div>
           </div>
           <div class="github-call">
-            <h3>Más documentación en <span class="accent">GitHub</span></h3>
-            <p class="muted">Repos con README, scripts, capturas y decisiones técnicas para mostrar el proceso completo.</p>
-            <a class="btn-main" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Abrir GitHub</a>
+            <h3>More documentation on <span class="accent">GitHub</span></h3>
+            <p class="muted">Repos with READMEs, scripts, screenshots, and technical decisions showing the full process.</p>
+            <a class="btn-main" href="https://github.com/daiana-analytics" target="_blank" rel="noopener">Open GitHub</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="sobre-mi">
+    <section id="about">
       <div class="container">
         <div class="head reveal">
-          <div class="eyebrow" style="justify-content:center">Quién soy</div>
-          <h2>Sobre mí</h2>
-          <p>Combino pensamiento analítico, comunicación clara y atención al detalle para transformar datos en información útil para negocio.</p>
+          <div class="eyebrow" style="justify-content:center">Who I am</div>
+          <h2>About me</h2>
+          <p>I combine analytical thinking, clear communication, and attention to detail to turn data into information that drives business decisions.</p>
         </div>
 
         <div class="about-grid">
@@ -390,10 +393,10 @@
               <img class="avatar" src="assets/brand/portrait2.png" alt="Daiana Beltrán" />
               <div class="info">
                 <p>
-                  <strong>Nombre:</strong> Daiana Beltrán<br />
-                  <strong>Rol objetivo:</strong> Analista de Datos Junior<br />
-                  <strong>Ubicación:</strong> Neuquén, Argentina (UTC-3)<br />
-                  <strong>Modalidad:</strong> Remoto (Argentina / LATAM)<br />
+                  <strong>Name:</strong> Daiana Beltrán<br />
+                  <strong>Target role:</strong> Data Analyst<br />
+                  <strong>Location:</strong> Neuquén, Argentina (UTC-3)<br />
+                  <strong>Availability:</strong> Remote (Argentina / LATAM / international)<br />
                   <strong>Email:</strong> <a href="mailto:daianabeltran@gmail.com">daianabeltran@gmail.com</a><br />
                   <strong>GitHub:</strong> <a href="https://github.com/daiana-analytics" target="_blank" rel="noopener">/daiana-analytics</a><br />
                   <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/daiana-beltran" target="_blank" rel="noopener">/in/daiana-beltran</a>
@@ -401,111 +404,111 @@
               </div>
             </div>
 
-            <div class="mini-title">Stack técnico</div>
-            <div class="stack" aria-label="Conocimientos técnicos">
-              <span>SQL Server</span><span>MySQL</span><span>Power BI</span><span>DAX básico</span><span>Power Query</span><span>Python básico</span><span>Jupyter Notebook</span><span>GitHub</span><span>Excel / Sheets</span>
+            <div class="mini-title">Technical stack</div>
+            <div class="stack" aria-label="Technical skills">
+              <span>SQL Server</span><span>MySQL</span><span>Power BI</span><span>DAX</span><span>Power Query</span><span>Python</span><span>Jupyter Notebook</span><span>GitHub</span><span>Excel / Sheets</span>
             </div>
           </div>
 
           <div class="card reveal">
-            <p><strong>Perfil:</strong> Analista de Datos Junior en formación, con proyectos de portfolio orientados al análisis de negocio, limpieza de datos, modelado, consultas SQL, visualización y dashboards.</p>
-            <p><strong>Dominios trabajados:</strong> e-commerce, retail, ventas, rentabilidad, márgenes, descuentos y operaciones.</p>
-            <p><strong>Valor diferencial:</strong> formación universitaria en Psicología y estudios previos en Contador Público, aportando comunicación, comprensión de necesidades, organización, análisis y mirada de negocio.</p>
+            <p><strong>Profile:</strong> Data Analyst with a portfolio built around real business questions — data cleaning, modeling, SQL querying, visualization, and dashboards, always closing with a concrete recommendation, not just another chart.</p>
+            <p><strong>Domains I've worked with:</strong> e-commerce, retail, sales, profitability, margins, discounts, and operations.</p>
+            <p><strong>What sets me apart:</strong> I work as a translator between data and business. Years as a clinical psychologist trained me to take disorganized information, find the pattern behind what's visible, ask the right questions before jumping to a solution, and explain complex findings in plain language. I know the tools — my real value is somewhere else.</p>
             <div class="sep"></div>
-            <p><strong>Qué hago en mis proyectos:</strong></p>
+            <p><strong>What I do in my projects:</strong></p>
             <ul class="bullets">
-              <li>Limpieza y organización de datos para reporting confiable.</li>
-              <li>Consultas SQL, joins, agregaciones, vistas y análisis exploratorio.</li>
-              <li>Modelado de datos y construcción de KPIs de negocio.</li>
-              <li>Dashboards en Power BI con enfoque ejecutivo y métricas claras.</li>
-              <li>Documentación en GitHub para mostrar el proceso técnico completo.</li>
+              <li>Clean and organize data for reliable reporting.</li>
+              <li>Write SQL queries, joins, aggregations, views, and exploratory analysis.</li>
+              <li>Model data and build business KPIs.</li>
+              <li>Build Power BI dashboards with an executive focus and clear metrics.</li>
+              <li>Document the full technical process on GitHub.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="formacion">
+    <section id="background">
       <div class="container">
         <div class="head reveal">
-          <div class="eyebrow" style="justify-content:center">El recorrido</div>
-          <h2>Formación y experiencia</h2>
-          <p>Base académica, formación técnica y experiencia profesional transferible al análisis de datos — de la escucha clínica al análisis de datos.</p>
+          <div class="eyebrow" style="justify-content:center">The journey</div>
+          <h2>Background &amp; experience</h2>
+          <p>Academic foundation, technical training, and professional experience that transfers directly into data analysis — from clinical listening to data analysis.</p>
         </div>
 
         <div class="timeline reveal">
           <div class="tl-item origin">
-            <div class="tl-label">Origen</div>
+            <div class="tl-label">Origin</div>
             <div class="resume-card">
               <div class="year">2016 — 2018</div>
               <div class="school">Universidad Nacional del Comahue</div>
-              <p>Contador Público — dos años cursados. Base en contabilidad, finanzas, economía y análisis numérico.</p>
+              <p>Public Accounting — two years completed. Foundation in accounting, finance, economics, and numerical analysis.</p>
             </div>
           </div>
 
           <div class="tl-item origin">
-            <div class="tl-label">Origen</div>
+            <div class="tl-label">Origin</div>
             <div class="resume-card">
               <div class="year">2019 — 2024</div>
               <div class="school">Universidad de Flores</div>
-              <p>Licenciatura en Psicología. Formación en evaluación, comunicación, análisis de la conducta, estadística aplicada y comprensión de necesidades humanas.</p>
+              <p>B.A. in Psychology. Training in assessment, communication, behavioral analysis, applied statistics, and understanding human needs.</p>
             </div>
           </div>
 
           <div class="tl-item">
-            <div class="tl-label">Transición</div>
+            <div class="tl-label">Transition</div>
             <div class="resume-card">
-              <div class="year">Abr 2024 — Feb 2025</div>
-              <div class="school">Unicorn Academy — Bootcamp en Análisis de Datos</div>
-              <p>300 hs / 8 meses. SQL, Power BI, Python, ETL y fundamentos de Azure, con proyectos guiados aplicados a negocio.</p>
+              <div class="year">Apr 2024 — Feb 2025</div>
+              <div class="school">Unicorn Academy — Data Analytics Bootcamp</div>
+              <p>300 hours / 8 months. SQL, Power BI, Python, ETL, and Azure fundamentals, with guided business-applied projects.</p>
             </div>
           </div>
 
           <div class="tl-item">
-            <div class="tl-label">Actualidad</div>
+            <div class="tl-label">Current</div>
             <div class="resume-card">
-              <div class="year">2025 — Actualidad</div>
-              <div class="school">Psicóloga clínica · Profesional independiente</div>
-              <p>Evaluación de necesidades, análisis de casos, seguimiento de procesos, comunicación clara, confidencialidad, organización y toma de decisiones. Habilidades transferibles al trabajo con datos y stakeholders.</p>
+              <div class="year">2025 — Present</div>
+              <div class="school">Clinical Psychologist · Independent Practice</div>
+              <p>Needs assessment, case analysis, process tracking, clear communication, confidentiality, organization, and decision-making. Skills directly transferable to working with data and stakeholders.</p>
             </div>
           </div>
 
           <div class="tl-item">
-            <div class="tl-label">En curso</div>
+            <div class="tl-label">In progress</div>
             <div class="resume-card">
-              <div class="year">2026 — En curso</div>
+              <div class="year">2026 — In progress</div>
               <div class="school">Data Science for Business / Data Analytics</div>
-              <p>Formación práctica en SQL, Python, Power BI, análisis de datos, automatización y ciencia de datos aplicada a negocios.</p>
+              <p>Hands-on training in SQL, Python, Power BI, data analysis, automation, and applied data science for business.</p>
             </div>
           </div>
 
           <div class="tl-item">
-            <div class="tl-label">En curso</div>
+            <div class="tl-label">In progress</div>
             <div class="resume-card">
-              <div class="year">2026 — En curso</div>
-              <div class="school">Smart Excel — Prof. Ing. Carolina De Andrade (SMARTpro Academy)</div>
-              <p>Entrenamiento intensivo de Excel aplicado a análisis de datos (60+ horas): fórmulas, tablas dinámicas, funciones de búsqueda, macros, formato condicional y dashboards.</p>
+              <div class="year">2026 — In progress</div>
+              <div class="school">Smart Excel — Prof. Eng. Carolina De Andrade (SMARTpro Academy)</div>
+              <p>Intensive Excel training applied to data analysis (60+ hours): formulas, pivot tables, lookup functions, macros, conditional formatting, and dashboards.</p>
             </div>
           </div>
 
           <div class="tl-item">
-            <div class="tl-label">Finalizado</div>
+            <div class="tl-label">Completed</div>
             <div class="resume-card">
-              <div class="year">2026 — Finalizado</div>
-              <div class="school">Comunicación y Oratoria Profesional — OPI 2.0 (Franco Pisso)</div>
-              <p>20 hs de formación en comunicación clara, estructura de mensajes y presentación de ideas — aplicable a la comunicación de hallazgos e insights de datos.</p>
+              <div class="year">2026 — Completed</div>
+              <div class="school">Professional Communication &amp; Public Speaking — OPI 2.0 (Franco Pisso)</div>
+              <p>20 hours of training in clear communication, message structure, and idea presentation — directly applicable to communicating data findings and insights.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto">
+    <section id="contact">
       <div class="container">
         <div class="head reveal">
-          <div class="eyebrow" style="justify-content:center">Hablemos</div>
-          <h2>Contacto</h2>
-          <p>Abierta a oportunidades como Analista de Datos Junior, BI Analyst o SQL / Power BI Analyst.</p>
+          <div class="eyebrow" style="justify-content:center">Let's talk</div>
+          <h2>Contact</h2>
+          <p>Open to opportunities as a Data Analyst, BI Analyst, or SQL / Power BI Analyst.</p>
         </div>
 
         <div class="contact-grid">
@@ -513,7 +516,7 @@
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 2 3 7v12h18V7l-9-5Z" /></svg>
             </span>
-            <div><strong>Ubicación</strong><span>Neuquén, Argentina (UTC-3)</span></div>
+            <div><strong>Location</strong><span>Neuquén, Argentina (UTC-3)</span></div>
           </div>
 
           <div class="contact-card reveal">
@@ -534,7 +537,7 @@
             <span class="ico" aria-hidden="true">
               <svg viewBox="0 0 24 24"><path d="M12 3v10m0 0 4-4m-4 4-4-4M4 17v3h16v-3" /></svg>
             </span>
-            <div><strong>CV</strong><a href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">Descargar CV en español</a></div>
+            <div><strong>Resume</strong><a href="https://docs.google.com/document/d/1wfUqE9l_3VJ4bIQwtI9KD0U60i0O18WYCdr_qjGw2f4/export?format=pdf" target="_blank" rel="noopener">Download Resume (English)</a></div>
           </div>
         </div>
       </div>
@@ -542,7 +545,7 @@
   </main>
 
   <footer>
-    © <span id="year"></span> Daiana Beltrán · Portfolio de datos · GitHub Pages
+    © <span id="year"></span> Daiana Beltrán · Data Portfolio · GitHub Pages
   </footer>
 
   <script>
@@ -594,7 +597,7 @@
 
     // Typewriter simple
     (function(){
-      const words = ["Analista de Datos Junior", "SQL · Power BI", "Dashboards · KPIs · Negocio"];
+      const words = ["Data Analyst", "SQL · Power BI", "Dashboards · KPIs · Business"];
       const el = document.getElementById("tw");
       let wi = 0, ci = 0, dir = 1;
       function tick(){
@@ -608,7 +611,7 @@
       tick();
     })();
 
-    // Contadores
+    // Counters
     (function(){
       const ease = t => 1 - Math.pow(1 - t, 3);
       const els = document.querySelectorAll('.n[data-target]');
@@ -637,7 +640,7 @@
     "@context":"https://schema.org",
     "@type":"Person",
     "name":"Daiana Beltrán",
-    "jobTitle":"Analista de Datos Junior",
+    "jobTitle":"Data Analyst",
     "email":"mailto:daianabeltran@gmail.com",
     "url":"https://github.com/daiana-analytics",
     "sameAs":[
