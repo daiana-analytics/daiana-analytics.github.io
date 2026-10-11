@@ -50,7 +50,7 @@
     /* ---------- NAV ---------- */
     .top{position:sticky;top:0;z-index:50;background:var(--ink);color:#fff;border-bottom:1px solid var(--rule-dark)}
     .top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
-    .mark{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:20px;letter-spacing:.01em;text-decoration:none;white-space:nowrap}
+    .mark{font-family:var(--display);font-stretch:100%;font-weight:700;font-size:20px;letter-spacing:.01em;text-decoration:none;white-space:nowrap}
     .top nav{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
     .top nav a{text-decoration:none;color:rgba(255,255,255,.72)}
     .top nav a:hover,.top nav a[aria-current="true"]{color:#fff}
@@ -74,9 +74,9 @@
 
     /* ---------- HERO ---------- */
     .hero{background:var(--ink);color:#fff;padding:72px 0 0;overflow:hidden}
-    .hero h1{font-family:var(--display);font-weight:800;font-stretch:72%;font-size:clamp(64px,11.5vw,168px);line-height:.86;letter-spacing:-.01em;margin:0}
+    .hero h1{font-family:var(--display);font-weight:700;font-stretch:100%;font-size:clamp(56px,9vw,132px);line-height:.92;letter-spacing:-.01em;margin:0}
     .hero-row{display:grid;grid-template-columns:1fr minmax(280px,420px);gap:48px;align-items:end;margin-top:28px}
-    .role{font-family:var(--display);font-stretch:95%;font-weight:600;font-size:clamp(21px,2.2vw,28px);line-height:1.25;margin:0 0 14px;color:#fff;max-width:26ch}
+    .role{font-family:var(--display);font-stretch:100%;font-weight:600;font-size:clamp(21px,2.2vw,28px);line-height:1.25;margin:0 0 14px;color:#fff;max-width:26ch}
     .lede{color:rgba(255,255,255,.74);font-size:17px;max-width:52ch;margin:0}
     .cta{display:flex;flex-wrap:wrap;gap:10px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:8px;font-weight:600;font-size:15.5px;text-decoration:none;border:1px solid transparent;transition:background .15s,border-color .15s}
@@ -104,7 +104,7 @@
     @keyframes draw{to{stroke-dashoffset:0}}
     @keyframes fadein{to{opacity:1}}
     .tag{position:absolute;font-size:14px;line-height:1.3;color:#fff;white-space:nowrap}
-    .tag b{display:block;font-family:var(--display);font-stretch:80%;font-weight:700;font-size:clamp(22px,2.6vw,34px);color:var(--flare);line-height:1}
+    .tag b{display:block;font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(22px,2.6vw,34px);color:var(--flare);line-height:1}
     .tag span{color:rgba(255,255,255,.7)}
     .tag.t1{left:22px;top:4%}
     .tag.t2{left:calc(16.67% + 18px);top:calc(83.4% - 76px)}
@@ -119,7 +119,7 @@
     /* ---------- SECTIONS ---------- */
     section{padding:96px 0}
     @media (max-width:640px){section{padding:64px 0}}
-    .sec-title{font-family:var(--display);font-stretch:80%;font-weight:700;font-size:clamp(36px,5vw,64px);line-height:.98;letter-spacing:-.005em;margin:0 0 20px;max-width:18ch}
+    .sec-title{font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(32px,4.2vw,54px);line-height:1.05;letter-spacing:-.005em;margin:0 0 20px;max-width:18ch}
     .sec-lede{color:var(--slate);font-size:18px;max-width:60ch;margin:0}
 
     /* Case */
@@ -127,14 +127,14 @@
     .facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);border-bottom:1px solid var(--rule)}
     .fact{padding:22px 24px 22px 0}
     .fact + .fact{padding-left:24px;border-left:1px solid var(--rule)}
-    .fact b{display:block;font-family:var(--display);font-stretch:75%;font-weight:700;font-size:clamp(42px,5.4vw,72px);line-height:1;color:var(--steel)}
+    .fact b{display:block;font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(38px,4.6vw,60px);line-height:1;color:var(--steel)}
     .fact span{display:block;margin-top:8px;color:var(--slate);font-size:15px;max-width:24ch}
     @media (max-width:640px){.facts{grid-template-columns:1fr}.fact,.fact + .fact{padding:18px 0;border-left:0}.fact + .fact{border-top:1px solid var(--rule)}}
     .shot{margin:48px 0 0;border-radius:10px;overflow:hidden;border:1px solid var(--rule);background:var(--white)}
     .shot img{width:100%;height:auto}
     .steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:28px;counter-reset:s}
     .steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:16px}
-    .steps li::before{content:counter(s);font-family:var(--display);font-stretch:75%;font-weight:700;font-size:30px;color:var(--steel);display:block;line-height:1;margin-bottom:10px}
+    .steps li::before{content:counter(s);font-family:var(--display);font-stretch:100%;font-weight:700;font-size:30px;color:var(--steel);display:block;line-height:1;margin-bottom:10px}
     .steps h3{font-size:18px;line-height:1.3;margin:0 0 8px}
     .steps p{color:var(--slate);font-size:15.5px;margin:0}
     @media (max-width:960px){.steps{grid-template-columns:1fr 1fr;gap:32px 28px}}
@@ -142,7 +142,7 @@
     .case-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:44px}
 
     .embed-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:80px 0 14px}
-    .embed-head h3{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:30px;margin:0}
+    .embed-head h3{font-family:var(--display);font-stretch:100%;font-weight:700;font-size:30px;margin:0}
     .embed-head p{margin:0;color:var(--slate);font-size:15.5px;max-width:60ch}
     .embed-head a{color:var(--steel);font-weight:600}
     .embed{width:100%;height:900px;border:1px solid var(--rule);border-radius:10px;background:#F3F5F8;display:block}
@@ -151,7 +151,7 @@
     /* Now */
     .now{background:var(--white);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:56px 0}
     .now-grid{display:grid;grid-template-columns:240px 1fr;gap:32px}
-    .now h2{font-family:var(--display);font-stretch:85%;font-weight:700;font-size:28px;line-height:1.1;margin:0}
+    .now h2{font-family:var(--display);font-stretch:100%;font-weight:700;font-size:28px;line-height:1.1;margin:0}
     .now-list{display:grid;gap:0}
     .now-item{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--rule)}
     .now-item:first-child{border-top:0;padding-top:0}
@@ -168,7 +168,7 @@
     .about-body p{max-width:60ch}
     .how{list-style:none;margin:28px 0 32px;padding:0;counter-reset:h}
     .how li{counter-increment:h;display:grid;grid-template-columns:44px 1fr;gap:14px;padding:16px 0;border-top:1px solid var(--rule)}
-    .how li::before{content:counter(h);font-family:var(--display);font-stretch:75%;font-weight:700;font-size:28px;line-height:1;color:var(--steel)}
+    .how li::before{content:counter(h);font-family:var(--display);font-stretch:100%;font-weight:700;font-size:28px;line-height:1;color:var(--steel)}
     .how b{display:block;font-size:17px;margin-bottom:2px}
     .how span{color:var(--slate);font-size:15.5px}
     .kit{display:grid;grid-template-columns:150px 1fr;gap:8px 20px;font-size:15.5px;margin:0}
@@ -190,7 +190,7 @@
     .contact{background:var(--ink);color:#fff;padding:88px 0}
     .contact .sec-title{color:#fff}
     .contact p{color:rgba(255,255,255,.72);max-width:52ch}
-    .mail{display:inline-block;font-family:var(--display);font-stretch:80%;font-weight:700;font-size:clamp(28px,5vw,60px);line-height:1.05;color:var(--flare);text-decoration:none;margin:18px 0 28px;word-break:break-word}
+    .mail{display:inline-block;font-family:var(--display);font-stretch:100%;font-weight:700;font-size:clamp(28px,5vw,60px);line-height:1.05;color:var(--flare);text-decoration:none;margin:18px 0 28px;word-break:break-word}
     .mail:hover{text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
     footer{background:var(--ink);color:rgba(255,255,255,.5);font-size:14px;padding:0 0 32px}
     footer .wrap{border-top:1px solid var(--rule-dark);padding-top:20px}
@@ -228,7 +228,7 @@
         <h1>Daiana<br />Beltrán</h1>
         <div class="hero-row">
           <div>
-            <p class="role" data-i18n="role">Analista de datos e inteligencia de negocios, con foco en energía</p>
+            <p class="role" data-i18n="role">Analista de datos e inteligencia de negocios</p>
             <p class="lede" data-i18n="lede">Antes de abrir un archivo pregunto qué decisión hay que tomar. Después reviso que el dato sea confiable, lo modelo con SQL, Python y Power BI, y cierro con una recomendación que se pueda usar.</p>
             <div class="where">
               <img src="assets/brand/portrait-720.webp" alt="" width="48" height="48" />
@@ -323,6 +323,7 @@
         <div class="about-body">
           <h2 class="sec-title" data-i18n="a_title">Primero la pregunta, después el dato</h2>
           <p class="sec-lede" data-i18n="a_lede">Busco posiciones de Data Analyst, BI Analyst o analista de control de gestión. Me interesa el trabajo donde un número termina en una decisión.</p>
+          <p class="sec-lede" style="margin-top:14px" data-i18n="a_psy">Vengo de la psicología clínica: años de entrevistar, relevar necesidades y explicar conclusiones complejas en simple. Hoy lo aplico a entender qué necesita quien va a usar un análisis.</p>
           <ol class="how">
             <li><div><b data-i18n="h1t">Entender el problema</b><span data-i18n="h1p">Qué hay que resolver, quién decide con ese análisis y cómo sería una buena respuesta.</span></div></li>
             <li><div><b data-i18n="h2t">Auditar antes de graficar</b><span data-i18n="h2p">Un tablero prolijo sobre datos mal cargados lleva a malas decisiones. Reviso, limpio y modelo antes de medir.</span></div></li>
@@ -333,7 +334,6 @@
             <dt data-i18n="k2">Análisis</dt><dd>Python (pandas, SciPy), Excel</dd>
             <dt data-i18n="k3">Visualización</dt><dd>Power BI, DAX</dd>
             <dt data-i18n="k4">Rubro</dt><dd data-i18n="k4v">Energía, Oil &amp; Gas</dd>
-            <dt data-i18n="k5">Base contable</dt><dd data-i18n="k5v">Dos años de Contador Público (UNComahue)</dd>
           </dl>
         </div>
       </div>
@@ -376,7 +376,7 @@
     // Textos en inglés. El español está en el HTML.
     const EN = {
       nav_case:'Case study', nav_about:'About', nav_bg:'Background', nav_contact:'Contact',
-      role:'Data and business intelligence analyst, focused on energy',
+      role:'Data and business intelligence analyst',
       lede:'Before opening a file, I ask what decision needs to be made. Then I check the data can be trusted, model it with SQL, Python and Power BI, and close with a recommendation people can use.',
       where:'Neuquén, Argentina. Remote or hybrid.',
       cta_case:'See the Vaca Muerta case', cta_cv:'Download resume', cta_cv2:'Download resume',
@@ -399,10 +399,11 @@
       n2s:'Next', n2t:'Margin by contract', n2p:'A management-control case for an industrial services company: which contracts make money and which lose it, with SQL and Power BI.',
       a_title:'The question first, then the data',
       a_lede:'I\'m looking for Data Analyst, BI Analyst or management control analyst roles. I like work where a number ends in a decision.',
+      a_psy:'I come from clinical psychology: years of interviewing, assessing needs and explaining complex conclusions simply. Today I use that to understand what the person who will use an analysis actually needs.',
       h1t:'Understand the problem', h1p:'What needs solving, who decides with the analysis, and what a good answer looks like.',
       h2t:'Audit before charting', h2p:'A polished dashboard on badly loaded data leads to bad decisions. I check, clean and model before measuring.',
       h3t:'Close with a recommendation', h3p:'Explained in plain language for non-technical readers.',
-      k1:'Data', k2:'Analysis', k3:'Visualization', k4:'Industry', k4v:'Energy, Oil &amp; Gas', k5:'Accounting base', k5v:'Two years of Public Accounting (UNComahue)',
+      k1:'Data', k2:'Analysis', k3:'Visualization', k4:'Industry', k4v:'Energy, Oil &amp; Gas',
       b_title:'Education and experience',
       t1w:'2026, in progress', t1o:'Online program', t1p:'Python, applied statistics and Machine Learning for business problems.',
       t2p:'60+ hours: formulas, pivot tables, lookup functions, macros and dashboards.',
