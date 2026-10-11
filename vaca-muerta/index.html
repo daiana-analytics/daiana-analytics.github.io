@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vaca Muerta · Dashboard interactivo · Daiana Beltrán</title>
+<meta name="description" content="Dashboard interactivo de Daiana Beltrán con datos públicos de producción no convencional de Vaca Muerta: declino de pozos, modelos de Arps y panel operativo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<style>
+  :root{
+    --cream:#F3F5F8; --tan:#DCE3EA; --navy:#0F1B2D; --teal:#1F5F8B; --teal-soft:#DCE8F2;
+    --magenta:#C9821C; --ink:#0F1B2D; --ink-soft:#56627A; --line:rgba(15,27,45,.12); --white:#fff;
+    --radius:16px;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;}
+  body{background:var(--cream); color:var(--ink); font-family:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,sans-serif; font-size:14px; line-height:1.4;}
+  .app{display:grid; grid-template-columns:10px 1fr; min-height:100%;}
+  .rail{background:var(--navy);}
+  .main{padding:18px clamp(14px,2.2vw,26px) 22px; min-width:0;}
+  header{display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px; justify-content:space-between;}
+  .ttl h1{margin:0; font-size:clamp(1.05rem,1.8vw,1.35rem); font-weight:800; letter-spacing:-.01em;}
+  .ttl p{margin:2px 0 0; color:var(--ink-soft); font-size:.8rem;}
+  .controls{display:flex; flex-wrap:wrap; align-items:center; gap:10px;}
+  .tabs{display:inline-flex; background:var(--white); border:1px solid var(--line); border-radius:999px; padding:3px;}
+  .tabs button{border:0; background:transparent; font:inherit; font-weight:700; font-size:.8rem; color:var(--ink-soft); padding:7px 14px; border-radius:999px; cursor:pointer;}
+  .tabs button[aria-selected="true"]{background:var(--navy); color:#fff;}
+  .tabs button:focus-visible, select:focus-visible, .reset:focus-visible{outline:2px solid var(--teal); outline-offset:2px;}
+  label.sel{display:flex; align-items:center; gap:8px; font-size:.78rem; font-weight:700; color:var(--ink-soft);}
+  select{font:inherit; font-size:.82rem; color:var(--ink); background:var(--white); border:1px solid var(--line); border-radius:10px; padding:7px 30px 7px 10px; max-width:250px;}
+  .reset{font:inherit; font-size:.78rem; font-weight:700; color:var(--teal); background:none; border:0; cursor:pointer; padding:6px 4px;}
+  .reset[hidden]{display:none;}
+  .chip{display:inline-flex; align-items:center; gap:6px; margin-top:12px; background:var(--teal-soft); color:#17496B; font-weight:700; font-size:.76rem; padding:5px 10px; border-radius:999px;}
+  .chip[hidden]{display:none;}
+
+  .kpis{display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:14px;}
+  .kpi{background:var(--white); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:12px; padding:12px 14px;}
+  .kpi .lab{font-size:.74rem; font-weight:700; color:var(--ink-soft);}
+  .kpi .val{font-size:clamp(1.25rem,2.2vw,1.7rem); font-weight:800; letter-spacing:-.02em; margin-top:2px; font-variant-numeric:tabular-nums;}
+  .kpi .sub{font-size:.7rem; color:var(--ink-soft); margin-top:1px;}
+
+  .grid{display:grid; gap:12px; margin-top:12px;}
+  .g-declino{grid-template-columns:1.35fr 1fr; grid-template-areas:"curve emp" "act tabla";}
+  .g-oper{grid-template-columns:1fr 1.25fr; grid-template-areas:"map prod" "map tipo";}
+  .card{background:var(--white); border:1px solid var(--line); border-radius:var(--radius); padding:12px 14px 12px; min-width:0; display:flex; flex-direction:column;}
+  .card h2{margin:0 0 2px; font-size:.86rem; font-weight:800;}
+  .card .hint{margin:0 0 8px; font-size:.7rem; color:var(--ink-soft);}
+  .chart{position:relative; flex:1; min-height:220px;}
+  #c-emp-wrap,#c-prod-wrap{min-height:290px;}
+  #map{flex:1; min-height:440px; border-radius:10px; overflow:hidden; background:var(--tan);}
+  .legend{display:flex; flex-wrap:wrap; gap:12px; font-size:.72rem; color:var(--ink-soft); margin-top:8px;}
+  .legend i{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align:-1px;}
+
+  .split{display:grid; grid-template-columns:150px 1fr; gap:14px; align-items:center; flex:1;}
+  .donut{position:relative; height:150px;}
+  .donut .center{position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; pointer-events:none;}
+  .donut .center b{font-size:1.25rem; font-weight:800;}
+  .donut .center span{font-size:.66rem; color:var(--ink-soft);}
+  table{width:100%; border-collapse:collapse; font-size:.76rem; font-variant-numeric:tabular-nums;}
+  th{background:var(--navy); color:#fff; font-weight:700; text-align:right; padding:6px 7px;}
+  th:first-child,td:first-child{text-align:left;}
+  td{padding:6px 7px; border-bottom:1px solid var(--line); text-align:right;}
+  tr.lib td:first-child{color:var(--magenta); font-weight:700;}
+  tr.aco td:first-child{color:var(--teal); font-weight:700;}
+  .insight{margin-top:10px; background:var(--cream); border-radius:10px; padding:10px 12px; font-size:.76rem;}
+  .insight b{color:var(--teal); text-transform:uppercase; letter-spacing:.06em; font-size:.68rem; display:block; margin-bottom:2px;}
+  .act-legend{font-size:.76rem; display:grid; gap:6px; max-width:260px;}
+  .act-legend div{display:flex; justify-content:space-between; gap:10px;}
+  .act-legend i{display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:6px;}
+
+  footer{margin-top:12px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px; font-size:.68rem; color:var(--ink-soft);}
+  footer a{color:inherit;}
+  [hidden]{display:none !important;}
+  .leaflet-container{font-family:inherit;}
+  .leaflet-popup-content{margin:10px 12px; font-size:.76rem; line-height:1.45;}
+  .leaflet-popup-content b{font-size:.8rem;}
+
+  @media (max-width:980px){
+    .g-declino{grid-template-columns:1fr; grid-template-areas:"curve" "emp" "act" "tabla";}
+    .g-oper{grid-template-columns:1fr; grid-template-areas:"map" "prod" "tipo";}
+    #map{min-height:340px;}
+  }
+  @media (max-width:640px){
+    .kpis{grid-template-columns:repeat(2,1fr);}
+    .split{grid-template-columns:1fr;}
+    select{max-width:100%;}
+    .controls{width:100%;}
+    label.sel{flex:1 1 100%; min-width:0;} label.sel select{flex:1; min-width:0; width:100%;}
+    .main{padding:14px 10px 16px;}
+    .kpi{padding:10px;} .card{padding:10px;}
+    table{font-size:.7rem;} th,td{padding:5px 4px;}
+  }
+  .tblwrap{overflow-x:auto;}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="rail" aria-hidden="true"></div>
+  <div class="main">
+    <header>
+      <div class="ttl">
+        <h1>Vaca Muerta — Declino y operación de pozos</h1>
+        <p>Formación Vaca Muerta · producción no convencional · datos públicos</p>
+      </div>
+      <div class="controls">
+        <div class="tabs" role="tablist" aria-label="Vistas del dashboard">
+          <button role="tab" id="t-declino" aria-controls="p-declino" aria-selected="true">Declino</button>
+          <button role="tab" id="t-oper" aria-controls="p-oper" aria-selected="false" tabindex="-1">Operativo</button>
+        </div>
+        <label class="sel">Empresa
+          <select id="emp"><option value="">Todas</option></select>
+        </label>
+        <button class="reset" id="reset" hidden>Quitar filtro ✕</button>
+      </div>
+    </header>
+    <div class="chip" id="chip" hidden></div>
+
+    <!-- DECLINO -->
+    <section id="p-declino" role="tabpanel" aria-labelledby="t-declino">
+      <div class="kpis">
+        <div class="kpi"><div class="lab">Pozos analizados</div><div class="val" id="k-n">–</div><div class="sub">pozos modernos con historia suficiente</div></div>
+        <div class="kpi"><div class="lab">Caída promedio 12 meses</div><div class="val" id="k-c12">–</div><div class="sub">desde el pico de producción</div></div>
+        <div class="kpi"><div class="lab">Caída promedio total</div><div class="val" id="k-ct">–</div><div class="sub">pico vs. último mes</div></div>
+        <div class="kpi"><div class="lab">Pozos activos</div><div class="val" id="k-act">–</div><div class="sub" id="k-act-sub">al cierre del período</div></div>
+      </div>
+      <div class="grid g-declino">
+        <div class="card" style="grid-area:curve">
+          <h2>Curva de declino: modelo Acotado (b≤2) vs Libre</h2>
+          <p class="hint">Ajuste de Arps sobre el pozo de caso 155785 · pasá el mouse para ver cada mes</p>
+          <div class="chart"><canvas id="c-curve" aria-label="Curva de declino de Arps, producción mensual por mes desde el pico"></canvas></div>
+        </div>
+        <div class="card" style="grid-area:emp">
+          <h2>Caída promedio 12 meses por empresa (%)</h2>
+          <p class="hint">Hacé clic en una barra para filtrar todo el dashboard</p>
+          <div class="chart" id="c-emp-wrap"><canvas id="c-emp" aria-label="Caída promedio a 12 meses por empresa"></canvas></div>
+        </div>
+        <div class="card" style="grid-area:act">
+          <h2>Pozos activos vs. inactivos</h2>
+          <p class="hint">Estado al último mes informado</p>
+          <div class="split">
+            <div class="donut"><canvas id="c-act" aria-label="Proporción de pozos activos e inactivos"></canvas><div class="center"><b id="d-total">–</b><span>pozos</span></div></div>
+            <div class="act-legend" id="act-legend"></div>
+          </div>
+        </div>
+        <div class="card" style="grid-area:tabla">
+          <h2>Comparación de modelos de ajuste (Arps)</h2>
+          <p class="hint">Parámetros del ajuste sobre el pozo de caso 155785</p>
+          <div class="tblwrap"><table>
+            <thead><tr><th>Ajuste</th><th>b</th><th>Di (%/mes)</th><th>qi (m³)</th><th>Acum. 15 años (m³)</th></tr></thead>
+            <tbody id="arps"></tbody>
+          </table></div>
+          <div class="insight"><b>Hallazgo clave</b>El modelo Libre (sin acotar b) sobreestima la producción acumulada a 15 años en <strong id="sobre">~16%</strong> frente al modelo físicamente realista (b≤2). Usar b≤2 evita proyecciones de reservas infladas.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPERATIVO -->
+    <section id="p-oper" role="tabpanel" aria-labelledby="t-oper" hidden>
+      <div class="kpis">
+        <div class="kpi"><div class="lab">Pozos</div><div class="val" id="o-n">–</div><div class="sub">registrados en la formación</div></div>
+        <div class="kpi"><div class="lab">Producción de petróleo</div><div class="val" id="o-pet">–</div><div class="sub">acumulado, m³</div></div>
+        <div class="kpi"><div class="lab">Producción de gas</div><div class="val" id="o-gas">–</div><div class="sub">acumulado, miles de m³</div></div>
+        <div class="kpi"><div class="lab">Áreas / yacimientos</div><div class="val" id="o-areas">–</div><div class="sub" id="o-emp-sub">con pozos activos o históricos</div></div>
+      </div>
+      <div class="grid g-oper">
+        <div class="card" style="grid-area:map">
+          <h2>Ubicación de pozos</h2>
+          <p class="hint">Zoom y clic en un pozo para ver su detalle</p>
+          <div id="map" role="region" aria-label="Mapa de pozos"></div>
+          <div class="legend" id="map-legend"></div>
+        </div>
+        <div class="card" style="grid-area:prod">
+          <h2>Producción de petróleo por empresa (m³)</h2>
+          <p class="hint">Hacé clic en una barra para filtrar todo el dashboard</p>
+          <div class="chart" id="c-prod-wrap"><canvas id="c-prod" aria-label="Producción acumulada de petróleo por empresa"></canvas></div>
+        </div>
+        <div class="card" style="grid-area:tipo">
+          <h2>Pozos por tipo y provincia</h2>
+          <p class="hint">Cantidad de pozos según el filtro actual</p>
+          <div class="split" style="grid-template-columns:1.3fr 1fr">
+            <div class="chart" style="min-height:190px"><canvas id="c-tipo" aria-label="Pozos por tipo"></canvas></div>
+            <div class="act-legend" id="prov-legend"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span>Fuente: Secretaría de Energía de la Nación — producción de pozos de gas y petróleo no convencional (datos.gob.ar). Proyecto de portfolio.</span>
+      <span>Daiana Beltrán</span>
+    </footer>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+(function(){
+  const D = window.VM_DATA;
+  const C = {navy:'#0F1B2D', teal:'#1F5F8B', magenta:'#C9821C', tan:'#DCE3EA', ink:'#0F1B2D', soft:'#56627A', line:'rgba(15,27,45,.10)', tealFade:'rgba(31,95,139,.28)'};
+  const TIPO_COL = ['#1F5F8B','#C9821C','#5E9C76','#0F1B2D','#9AA3B5'];
+  const idx = Object.fromEntries(D.cols.map((c,i)=>[c,i]));
+  const P = D.pozos;
+  const nf0 = new Intl.NumberFormat('es-AR',{maximumFractionDigits:0});
+  const nf1 = new Intl.NumberFormat('es-AR',{maximumFractionDigits:1, minimumFractionDigits:1});
+  const nf2 = new Intl.NumberFormat('es-AR',{maximumFractionDigits:2, minimumFractionDigits:2});
+  const compact = v => {
+    const a=Math.abs(v);
+    if(a>=1e6) return nf2.format(v/1e6)+' M';
+    if(a>=1e3) return nf1.format(v/1e3)+' mil';
+    return nf0.format(v);
+  };
+  const shortName = s => s.replace(/\s*\(SUCURSAL ARGENTINA\)\s*/,' ').replace(/ S\.R\.L\.| S\.A\.U\.| S\.A\.| SAU| SA| LLC| LTD/g,'').replace(/\s+/g,' ').trim();
+
+  let emp = null;           // empresa index or null
+  const sel = document.getElementById('emp');
+  D.empresas.map((e,i)=>({e,i})).sort((a,b)=>a.e.localeCompare(b.e,'es')).forEach(({e,i})=>{
+    const o=document.createElement('option'); o.value=i; o.textContent=e; sel.appendChild(o);
+  });
+
+  Chart.defaults.font.family = "'Plus Jakarta Sans', system-ui, sans-serif";
+  Chart.defaults.font.size = 11;
+  Chart.defaults.color = C.soft;
+  const tip = {backgroundColor:C.navy, titleColor:'#fff', bodyColor:'#fff', padding:10, cornerRadius:8, displayColors:false, titleFont:{weight:'700'}};
+
+  /* ---------- Curva Arps (global) ---------- */
+  const lib = D.curva['Libre'], aco = D.curva['Acotado (b<=2)'];
+  new Chart(document.getElementById('c-curve'),{
+    type:'line',
+    data:{labels:lib.map((_,i)=>i), datasets:[
+      {label:'Acotado (b≤2)', data:aco, borderColor:C.teal, backgroundColor:C.teal, borderWidth:2.5, pointRadius:0, pointHoverRadius:4, tension:.2},
+      {label:'Libre', data:lib, borderColor:C.magenta, backgroundColor:C.magenta, borderWidth:2, pointRadius:0, pointHoverRadius:4, tension:.2}
+    ]},
+    options:{responsive:true, maintainAspectRatio:false, interaction:{mode:'index', intersect:false},
+      plugins:{legend:{position:'bottom', labels:{usePointStyle:true, pointStyle:'circle', boxWidth:8, color:C.ink}},
+        tooltip:{...tip, displayColors:true, callbacks:{title:it=>'Mes '+it[0].label+' desde el pico', label:it=>' '+it.dataset.label+': '+nf1.format(it.parsed.y)+' m³/mes'}}},
+      scales:{x:{title:{display:true,text:'Meses desde el pico'}, ticks:{maxTicksLimit:8}, grid:{display:false}},
+              y:{title:{display:true,text:'m³ de petróleo / mes'}, grid:{color:C.line}, beginAtZero:true}}}
+  });
+
+  /* ---------- Tabla Arps ---------- */
+  const tb=document.getElementById('arps');
+  D.arps.forEach(r=>{
+    const tr=document.createElement('tr'); tr.className=r.ajuste.startsWith('Libre')?'lib':'aco';
+    tr.innerHTML=`<td>${r.ajuste.replace('<=','≤')}</td><td>${nf2.format(r.b)}</td><td>${nf2.format(r.Di)}</td><td>${nf1.format(r.qi)}</td><td>${nf0.format(r.produccion_acumulada_15a_m3)}</td>`;
+    tb.appendChild(tr);
+  });
+  const aL=D.arps.find(r=>r.ajuste.startsWith('Libre')), aA=D.arps.find(r=>!r.ajuste.startsWith('Libre'));
+  if(aL&&aA) document.getElementById('sobre').textContent='~'+nf0.format((aL.produccion_acumulada_15a_m3/aA.produccion_acumulada_15a_m3-1)*100)+'%';
+
+  /* ---------- Bar helpers (click to filter) ---------- */
+  function barChart(el, valueLabel){
+    return new Chart(el,{
+      type:'bar',
+      data:{labels:[], datasets:[{data:[], backgroundColor:[], borderRadius:3, barPercentage:.78, categoryPercentage:.9}]},
+      options:{indexAxis:'y', responsive:true, maintainAspectRatio:false, animation:{duration:350},
+        onClick:(e,els,ch)=>{ if(els.length){ const i=ch.$empIdx[els[0].index]; setEmp(emp===i?null:i); } },
+        onHover:(e,els)=>{ e.native.target.style.cursor = els.length?'pointer':'default'; },
+        plugins:{legend:{display:false}, tooltip:{...tip, callbacks:{title:it=>it[0].chart.$full[it[0].dataIndex], label:valueLabel, afterLabel:it=>{const n=it.chart.$n[it.dataIndex]; return n!=null? n+' pozos':'';}}}},
+        scales:{x:{grid:{color:C.line}, beginAtZero:true}, y:{grid:{display:false}, ticks:{color:C.ink, autoSkip:false, font:{size:10.5}}}}}
+    });
+  }
+  const chEmp = barChart(document.getElementById('c-emp'), it=>' '+nf1.format(it.parsed.x)+'% de caída a 12 meses');
+  chEmp.options.scales.x.max=100; chEmp.options.scales.x.ticks={callback:v=>v+'%'};
+  const chProd = barChart(document.getElementById('c-prod'), it=>' '+nf0.format(it.parsed.x)+' m³ de petróleo');
+  chProd.options.scales.x.ticks={callback:v=>v>=1e6? nf0.format(v/1e6)+' M' : compact(v)};
+
+  /* ---------- Donut activos ---------- */
+  const chAct = new Chart(document.getElementById('c-act'),{
+    type:'doughnut',
+    data:{labels:['Activos','Inactivos'], datasets:[{data:[0,0], backgroundColor:[C.teal,C.navy], borderWidth:0}]},
+    options:{responsive:true, maintainAspectRatio:false, cutout:'72%', plugins:{legend:{display:false}, tooltip:{...tip, callbacks:{label:it=>{const t=it.dataset.data.reduce((a,b)=>a+b,0); return ' '+nf0.format(it.parsed)+' pozos ('+nf1.format(t?it.parsed/t*100:0)+'%)';}}}}}
+  });
+
+  /* ---------- Tipo de pozo ---------- */
+  const chTipo = new Chart(document.getElementById('c-tipo'),{
+    type:'bar',
+    data:{labels:D.tipos, datasets:[{data:[], backgroundColor:TIPO_COL, borderRadius:3}]},
+    options:{indexAxis:'y', responsive:true, maintainAspectRatio:false, animation:{duration:350},
+      plugins:{legend:{display:false}, tooltip:{...tip, callbacks:{label:it=>' '+nf0.format(it.parsed.x)+' pozos'}}},
+      scales:{x:{beginAtZero:true, grid:{color:C.line}, ticks:{precision:0, callback:v=>nf0.format(v)}}, y:{grid:{display:false}, ticks:{color:C.ink}}}}
+  });
+
+  /* ---------- Mapa ---------- */
+  let map=null, layer=null;
+  function initMap(){
+    if(map) return;
+    map = L.map('map',{scrollWheelZoom:false, zoomControl:true, attributionControl:true, preferCanvas:true}).setView([-38.4,-68.9],8);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',{
+      maxZoom:16, attribution:'Mapa base &copy; Esri, HERE, Garmin, &copy; OpenStreetMap'
+    }).addTo(map);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}',{maxZoom:16}).addTo(map);
+    map.on('focus',()=>map.scrollWheelZoom.enable()); map.on('blur',()=>map.scrollWheelZoom.disable());
+    layer = L.layerGroup().addTo(map);
+    document.getElementById('map-legend').innerHTML = D.tipos.map((t,i)=>`<span><i style="background:${TIPO_COL[i]}"></i>${t}</span>`).join('');
+    drawMap(true);
+  }
+  function drawMap(fit){
+    if(!map) return;
+    layer.clearLayers();
+    const pts=[];
+    rows().forEach(p=>{
+      const la=p[idx.lat], lo=p[idx.lon]; if(la==null||lo==null) return;
+      pts.push([la,lo]);
+      const m=L.circleMarker([la,lo],{radius:emp==null?3.5:6, weight:1, color:'#fff', fillColor:TIPO_COL[p[idx.tipo]], fillOpacity:.85});
+      m.bindPopup(()=>`<b>Pozo ${p[idx.id]}</b><br>${D.empresas[p[idx.emp]]}<br>${p[idx.area]>=0?D.areas[p[idx.area]]+'<br>':''}${D.tipos[p[idx.tipo]]}${p[idx.prov]>=0?' · '+D.provincias[p[idx.prov]]:''}<br>Petróleo acum.: <b>${nf0.format(p[idx.pet])} m³</b>${p[idx.c12]!=null?'<br>Caída 12 meses: <b>'+nf1.format(p[idx.c12])+'%</b>':''}`);
+      layer.addLayer(m);
+    });
+    if(fit && pts.length){ map.fitBounds(pts,{padding:[24,24], maxZoom:11}); }
+  }
+
+  /* ---------- Filtering ---------- */
+  function rows(){ return emp==null? P : P.filter(p=>p[idx.emp]===emp); }
+  function rowsD(){ return emp==null? P : P.filter(p=>p[idx.empd]===emp); }
+  const mean = a => a.length? a.reduce((s,v)=>s+v,0)/a.length : null;
+
+  function updateEmpBars(){
+    // caída 12m promedio por empresa: top 12 (+ la seleccionada si queda afuera)
+    const g={};
+    P.forEach(p=>{ const v=p[idx.c12]; if(v==null) return; (g[p[idx.empd]]=g[p[idx.empd]]||[]).push(v); });
+    let arr=Object.entries(g).map(([k,v])=>({i:+k, v:mean(v), n:v.length})).sort((a,b)=>b.v-a.v);
+    let top=arr.slice(0,12); if(emp!=null && !top.some(x=>x.i===emp)){ const s=arr.find(x=>x.i===emp); if(s) top=[...top.slice(0,11),s]; }
+    fillBars(chEmp, top);
+  }
+  function updateProdBars(){
+    const g={};
+    P.forEach(p=>{ const k=p[idx.emp]; g[k]=g[k]||{v:0,n:0}; g[k].v+=p[idx.pet]; g[k].n++; });
+    let arr=Object.entries(g).map(([k,o])=>({i:+k, v:o.v, n:o.n})).filter(x=>x.v>0).sort((a,b)=>b.v-a.v);
+    let top=arr.slice(0,12); if(emp!=null && !top.some(x=>x.i===emp)){ const s=arr.find(x=>x.i===emp); if(s) top=[...top.slice(0,11),s]; }
+    fillBars(chProd, top);
+  }
+  function fillBars(ch, top){
+    ch.$empIdx=top.map(x=>x.i); ch.$full=top.map(x=>D.empresas[x.i]); ch.$n=top.map(x=>x.n);
+    const mx = ch.canvas.parentNode.clientWidth<420 ? 15 : 26;
+    ch.data.labels=top.map(x=>{const s=shortName(D.empresas[x.i]); return s.length>mx? s.slice(0,mx-1)+'…' : s;});
+    ch.data.datasets[0].data=top.map(x=>x.v);
+    ch.data.datasets[0].backgroundColor=top.map(x=> emp==null||x.i===emp ? C.teal : C.tealFade);
+    ch.update();
+  }
+
+  function render(){
+    const R=rows(), RD=rowsD();
+    // Declino KPIs
+    const dec=RD.filter(p=>p[idx.c12]!=null);
+    document.getElementById('k-n').textContent=nf0.format(dec.length);
+    const c12=mean(dec.map(p=>p[idx.c12])), ct=mean(dec.filter(p=>p[idx.ctot]!=null).map(p=>p[idx.ctot]));
+    document.getElementById('k-c12').textContent=c12==null?'–':nf1.format(c12)+'%';
+    document.getElementById('k-ct').textContent=ct==null?'–':nf1.format(ct)+'%';
+    const cl=RD.filter(p=>p[idx.activo]!=null), act=cl.filter(p=>p[idx.activo]===1).length, ina=cl.length-act;
+    document.getElementById('k-act').textContent=cl.length? nf1.format(act/cl.length*100)+'%' : '–';
+    document.getElementById('k-act-sub').textContent=cl.length? nf0.format(act)+' de '+nf0.format(cl.length)+' pozos clasificados' : 'sin pozos clasificados';
+    chAct.data.datasets[0].data=[act,ina]; chAct.update();
+    document.getElementById('d-total').textContent=nf0.format(cl.length);
+    document.getElementById('act-legend').innerHTML=
+      `<div><span><i style="background:${C.teal}"></i>Activos</span><b>${nf0.format(act)}</b></div>`+
+      `<div><span><i style="background:${C.navy}"></i>Inactivos</span><b>${nf0.format(ina)}</b></div>`;
+    updateEmpBars();
+
+    // Operativo
+    document.getElementById('o-n').textContent=nf0.format(R.length);
+    const pet=R.reduce((s,p)=>s+p[idx.pet],0), gas=R.reduce((s,p)=>s+p[idx.gas],0);
+    document.getElementById('o-pet').textContent=compact(pet);
+    document.getElementById('o-gas').textContent=compact(gas);
+    document.getElementById('o-areas').textContent=nf0.format(new Set(R.map(p=>p[idx.area]).filter(a=>a>=0)).size);
+    updateProdBars();
+    const tc=D.tipos.map(()=>0); R.forEach(p=>tc[p[idx.tipo]]++);
+    chTipo.data.datasets[0].data=tc; chTipo.update();
+    const pc={}; R.forEach(p=>{ const k=p[idx.prov]>=0?D.provincias[p[idx.prov]]:'Sin dato'; pc[k]=(pc[k]||0)+1; });
+    document.getElementById('prov-legend').innerHTML='<div style="font-weight:700;color:var(--ink-soft);font-size:.7rem">Provincia</div>'+
+      Object.entries(pc).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<div><span>${k}</span><b>${nf0.format(v)} <span style="font-weight:500;color:var(--ink-soft)">(${nf1.format(v/R.length*100)}%)</span></b></div>`).join('');
+    drawMap(true);
+
+    // controls
+    sel.value = emp==null?'':String(emp);
+    document.getElementById('reset').hidden = emp==null;
+    const chip=document.getElementById('chip');
+    chip.hidden = emp==null; if(emp!=null) chip.textContent='Filtrando por: '+D.empresas[emp];
+    postHeight();
+  }
+  function setEmp(i){ emp = (i===''||i==null)? null : +i; render(); }
+  sel.addEventListener('change',()=>setEmp(sel.value));
+  document.getElementById('reset').addEventListener('click',()=>setEmp(null));
+
+  /* ---------- Tabs ---------- */
+  const tabs=[...document.querySelectorAll('[role=tab]')];
+  function showTab(t){
+    tabs.forEach(b=>{ const on=b===t; b.setAttribute('aria-selected',on); b.tabIndex=on?0:-1; document.getElementById(b.getAttribute('aria-controls')).hidden=!on; });
+    if(t.id==='t-oper'){ initMap(); setTimeout(()=>{ map.invalidateSize(); drawMap(true); },30); }
+    postHeight();
+  }
+  tabs.forEach(b=>{
+    b.addEventListener('click',()=>showTab(b));
+    b.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'||e.key==='ArrowLeft'){ const n=tabs[(tabs.indexOf(b)+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length]; n.focus(); showTab(n);} });
+  });
+
+  /* ---------- Altura para el iframe del sitio ---------- */
+  function postHeight(){
+    if(window.parent!==window){
+      requestAnimationFrame(()=>window.parent.postMessage({vmHeight:document.documentElement.scrollHeight},'*'));
+    }
+  }
+  let rz; window.addEventListener('resize',()=>{ postHeight(); clearTimeout(rz); rz=setTimeout(()=>{updateEmpBars(); updateProdBars();},200); });
+
+  render();
+})();
+</script>
+</body>
+</html>
