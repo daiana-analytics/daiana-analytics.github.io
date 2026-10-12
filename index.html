@@ -444,9 +444,9 @@
     if (start === 'en') setLang('en');
 
     // Menú en celular
-    const top = document.getElementById('top'), burger = document.getElementById('burger');
-    burger.addEventListener('click', () => { const o = top.classList.toggle('open'); burger.setAttribute('aria-expanded', String(o)); });
-    document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => { top.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }));
+    const hdr = document.getElementById('top'), burger = document.getElementById('burger');
+    burger.addEventListener('click', () => { const o = hdr.classList.toggle('open'); burger.setAttribute('aria-expanded', String(o)); });
+    document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => { hdr.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }));
 
     // Sección activa
     const links = [...document.querySelectorAll('#menu a')], map = {};
